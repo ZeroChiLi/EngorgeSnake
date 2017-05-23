@@ -1,0 +1,169 @@
+C51 COMPILER V9.01   INITGAME                                                              03/23/2017 15:01:31 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE INITGAME
+OBJECT MODULE PLACED IN initGame.OBJ
+COMPILER INVOKED BY: D:\Program\Keil\C51\BIN\C51.EXE initGame.c LARGE BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "initGame.h"
+   2          
+   3          //列 左至右
+   4          unsigned char code COL[8] = { 0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe };
+   5          
+   6          //索引代表列,数值代表该列的当前值
+   7          unsigned char currentRedCOL[8];
+   8          
+   9          unsigned char currentGreenCOL[8];
+  10          
+  11          //当前红点阵是否亮着
+  12          unsigned char redMatrix[8][8];
+  13          
+  14          //当前绿点阵是否亮着
+  15          unsigned char greenMatrix[8][8];
+  16          
+  17          void initRedMatrix()
+  18          {
+  19   1              unsigned char i, j;
+  20   1              for (i = 0; i < 8; i++)
+  21   1                      for (j = 0; j < 8; j++)
+  22   1                              redMatrix[i][j] = 0;
+  23   1      }
+  24          
+  25          void initGreenMatrix()
+  26          {
+  27   1              unsigned char i, j;
+  28   1              for (i = 0; i < 8; i++)
+  29   1                      for (j = 0; j < 8; j++)
+  30   1                              greenMatrix[i][j] = 0;
+  31   1      }
+  32          
+  33          void initCurrentCOL()
+  34          {
+  35   1              unsigned char i;
+  36   1              for (i = 0; i < 8; i++)
+  37   1                      currentRedCOL[i] = 0x00;
+  38   1      }
+  39          
+  40          void updateRedMat(const Point point) { redMatrix[point.y - 1][point.x - 1] = 1; }
+  41          
+  42          void updateGreenMat(const Point point) { greenMatrix[point.y - 1][point.x - 1] = 1; }
+  43          
+  44          void updateGreenMatXY(const int x, const int y) { greenMatrix[y - 1][x - 1] = 1; }
+  45          
+  46          void updateCol()
+  47          {
+  48   1              unsigned char i, j;
+  49   1              initCurrentCOL();
+  50   1              for (i = 0; i < 8; i++)
+  51   1                      for (j = 0; j < 8; j++)
+  52   1                      {
+  53   2                              currentRedCOL[i] |= redMatrix[j][i] ;
+  54   2                              currentGreenCOL[i] |= greenMatrix[j][i];
+  55   2                              if (j < 7)
+C51 COMPILER V9.01   INITGAME                                                              03/23/2017 15:01:31 PAGE 2   
+
+  56   2                              {
+  57   3                                      currentRedCOL[i] <<= 1;
+  58   3                                      currentGreenCOL[i] <<= 1;
+  59   3                              }
+  60   2                      }
+  61   1      }
+  62          
+  63          void showMatrix(unsigned int delayTime)
+  64          {
+  65   1              unsigned char col,k = 0;
+  66   1              for (delayTime; delayTime > 0; --delayTime)
+  67   1                      for (col = 0; col < 8; col++)
+  68   1                      {
+  69   2                              READPORTS = 0xFF;
+  70   2                              GREENPORTS = 0xFF;
+  71   2      
+  72   2                              COMMONPORTS = currentRedCOL[col]; 
+  73   2                              READPORTS = COL[col];            
+  74   2      
+  75   2                              COMMONPORTS = currentGreenCOL[col];
+  76   2                              GREENPORTS = COL[col];                  
+  77   2                      }
+  78   1      }
+  79          
+  80          void movePoint(Point *p, Direction dir)
+  81          {
+  82   1              if (!isDirection(dir))
+  83   1                      dir = (*p).dir;
+  84   1              switch (dir)
+  85   1              {
+  86   2              case(UP):
+  87   2              {
+  88   3                      (*p).dir = UP;
+  89   3                      (*p).y = (*p).y == 1 ? 8 : (*p).y - 1;
+  90   3                      break;
+  91   3              }
+  92   2              case(DOWN):
+  93   2              {
+  94   3                      (*p).dir = DOWN;
+  95   3                      (*p).y = (*p).y == 8 ? 1 : (*p).y + 1;
+  96   3                      break;
+  97   3              }
+  98   2              case(LEFT):
+  99   2              {
+ 100   3                      (*p).dir = LEFT;
+ 101   3                      (*p).x = (*p).x == 1 ? 8 : (*p).x - 1;
+ 102   3                      break;
+ 103   3              }
+ 104   2              case(RIGHT):
+ 105   2              {
+ 106   3                      (*p).dir = RIGHT;
+ 107   3                      (*p).x = (*p).x == 8 ? 1 : (*p).x + 1;
+ 108   3                      break;
+ 109   3              }
+ 110   2              default:
+ 111   2                      break;
+ 112   2              }
+ 113   1      }
+ 114          
+ 115          unsigned char key_Scan() { return GPIO_KEY; }
+ 116          
+ 117          void delay10ms(unsigned int c)
+C51 COMPILER V9.01   INITGAME                                                              03/23/2017 15:01:31 PAGE 3   
+
+ 118          {
+ 119   1              unsigned char a, b;
+ 120   1              for (; c > 0; c--)
+ 121   1                      for (b = 38; b > 0; b--)
+ 122   1                              for (a = 130; a > 0; a--);
+ 123   1      }
+ 124          
+ 125          unsigned char isDirection(Direction dir)
+ 126          {
+ 127   1              if (dir != UP && dir != DOWN && dir != LEFT &&  dir != RIGHT)
+ 128   1                      return 0;
+ 129   1              return 1;
+ 130   1      }
+ 131          
+ 132          unsigned char pointToInt(const Point p) { return (p.y - 1) * 8 + (p.x - 1); }
+ 133          
+ 134          unsigned char xyToInt(const int x, const int y) { return (y - 1) * 8 + (x - 1); }
+ 135          
+ 136          Point intToPoint(unsigned char num)
+ 137          {
+ 138   1              Point p;
+ 139   1              p.x = num % 8 + 1;
+ 140   1              p.y = num / 8 + 1;
+ 141   1              return p;
+ 142   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    816    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =    144      19
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
