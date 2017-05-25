@@ -37,11 +37,16 @@ void initCurrentCOL()
 		currentRedCOL[i] = 0x00;
 }
 
-void updateRedMat(const Point point) { redMatrix[point.y - 1][point.x - 1] = 1; }
+void addPointToRedMat(const Point point) 
+{
+	redMatrix[point.y - 1][point.x - 1] = 1; 
+}
 
-void updateGreenMat(const Point point) { greenMatrix[point.y - 1][point.x - 1] = 1; }
+void addPointToGreenMat(const Point point) 
+{ 
+	greenMatrix[point.y - 1][point.x - 1] = 1; 
+}
 
-void updateGreenMatXY(const int x, const int y) { greenMatrix[y - 1][x - 1] = 1; }
 
 void updateCol()
 {

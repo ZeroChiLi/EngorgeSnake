@@ -1,4 +1,5 @@
 #include "Snake.h"
+#include "MatrixLED.h"
 
 void initSnake(Snake * snake)
 {
@@ -42,13 +43,13 @@ unsigned char snakeCollision(Snake *snake, Food *food)
 	unsigned char headY = (*snake)._body[0].y;
 	unsigned char i = 1;
 	if (food != 0)
-		if (headX == (*food).x && headY == (*food).y)
+		if (headX == (*food).position.x && headY == (*food).position.y)
 		{
 			++(*snake)._length;
 			foodEaten(food);
 			return 0;
 		}
-
+	//碰撞自己身体
 	for (; i < (*snake)._length; ++i)
 		if (headX == (*snake)._body[i].x && headY == (*snake)._body[i].y)
 			return 1;
@@ -61,38 +62,39 @@ void snakeMove(Snake *snake)
 	for (; i >= 1; --i)
 	{
 		(*snake)._body[i] = (*snake)._body[i - 1];
-		updateRedMat((*snake)._body[i]);
+		addPointToRedMat((*snake)._body[i]);
 	}
 
-	snakeHeadMove(snake);
+	snakeHeadMove(snake);	  
+	addPointToRedMat(*snakeGetHead(snake));
 }
 
 
 void snakeHeadMove(Snake *snake)
 {
-	Point * p = &(*snake)._body[0];
+	Point * head = snakeGetHead(snake);
 	Direction dir = (*snake)._direction;
 
 	switch (dir)
 	{
 	case(UP):
 	{
-		(*p).y = (*p).y == 1 ? 8 : (*p).y - 1;
+		(*head).y = (*head).y == 1 ? 8 : (*head).y - 1;
 		break;
 	}
 	case(DOWN):
 	{
-		(*p).y = (*p).y == 8 ? 1 : (*p).y + 1;
+		(*head).y = (*head).y == 8 ? 1 : (*head).y + 1;
 		break;
 	}
 	case(LEFT):
 	{
-		(*p).x = (*p).x == 1 ? 8 : (*p).x - 1;
+		(*head).x = (*head).x == 1 ? 8 : (*head).x - 1;
 		break;
 	}
 	case(RIGHT):
 	{
-		(*p).x = (*p).x == 8 ? 1 : (*p).x + 1;
+		(*head).x = (*head).x == 8 ? 1 : (*head).x + 1;
 		break;
 	}
 	default:

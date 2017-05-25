@@ -12,17 +12,15 @@
 //方向,独立键盘 k3 k6 k7 k8
 typedef enum DIRECTION
 {
-	UP = 0xFB,
-	DOWN = 0xBF,
-	LEFT = 0xDF,
-	RIGHT = 0x7F
+	NONE = 0,
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
 }Direction;		   
 
 
 //判断是否为方向
 extern unsigned char isDirection(Direction dir);
-
-//延时,单位ms
-extern void delayms(unsigned int c);
 
 #endif

@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   POINT                                                                 05/24/2017 23:27:58 PAGE 1   
+C51 COMPILER V9.01   POINT                                                                 05/25/2017 14:40:53 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE POINT
@@ -11,17 +11,23 @@ line level    source
    2          #include "Point.h"
    3          
    4          
-   5          unsigned char pointToInt(const Point p) { return (p.y - 1) * 8 + (p.x - 1); }
-   6          
-   7          unsigned char xyToInt(const int x, const int y) { return (y - 1) * 8 + (x - 1); }
-   8          
-   9          Point intToPoint(unsigned char num)
-  10          {
-  11   1              Point p;
-  12   1              p.x = num % 8 + 1;
-  13   1              p.y = num / 8 + 1;
-  14   1              return p;
-  15   1      }
+   5          unsigned char pointToInt(const Point p) 
+   6          { 
+   7   1              return (p.y - 1) * 8 + (p.x - 1); 
+   8   1      }
+   9          
+  10          unsigned char xyToInt(const int x, const int y) 
+  11          { 
+  12   1              return (y - 1) * 8 + (x - 1); 
+  13   1      }
+  14          
+  15          Point intToPoint(unsigned char num)
+  16          {
+  17   1              Point p;
+  18   1              p.x = num % 8 + 1;
+  19   1              p.y = num / 8 + 1;
+  20   1              return p;
+  21   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

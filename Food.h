@@ -1,13 +1,12 @@
 #ifndef _FOOD_H_
 #define _FOOD_H_
 					
-#include "MatrixLED.h"
+#include "Point.h"
 
 typedef struct Food
 {
-	unsigned char count;
-	unsigned char x;
-	unsigned char y;
+	unsigned char exist;
+	Point position;
 }Food;
 
 

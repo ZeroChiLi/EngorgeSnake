@@ -27,12 +27,11 @@ extern void initGreenMatrix();
 //初始化当前每列值
 extern void initCurrentCOL();
 
-//更新红点阵
-extern void updateRedMat(const Point point);
+//添加点到红点阵
+extern void addPointToRedMat(const Point point);
 
-//更新绿点阵
-extern void updateGreenMat(const Point point);
-extern void updateGreenMatXY(const int x,const int y);
+//添加点到绿点阵
+extern void addPointToGreenMat(const Point point);
 
 //更新当前每列的行值
 extern void updateCol();

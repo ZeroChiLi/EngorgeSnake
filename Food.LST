@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   FOOD                                                                  05/24/2017 23:31:07 PAGE 1   
+C51 COMPILER V9.01   FOOD                                                                  05/25/2017 14:40:53 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE FOOD
@@ -7,19 +7,19 @@ COMPILER INVOKED BY: D:\Program\Keil\C51\BIN\C51.EXE Food.c LARGE BROWSE DEBUG O
 
 line level    source
 
-   1          #include "Food.h"
-   2          #include <stdlib.h> //rand()º¯Êý
-   3          
-   4          void initFood(Food *food)
-   5          {
-   6   1              (*food).count = 0;
-   7   1              foodsetPos(food, getRandomFreePos());
-   8   1      }
-   9          
+   1          #include "Food.h"                                         
+   2          #include "MatrixLED.h"
+   3          #include <stdlib.h> //rand()º¯Êý
+   4          
+   5          void initFood(Food *food)
+   6          {                                       
+   7   1              (*food).exist = 1;
+   8   1              foodsetPos(food, getRandomFreePos());   
+   9   1      }
   10          
   11          unsigned char getRandomFreePos()
   12          {
-  13   1              unsigned char i, j, freePos[64], freeSize = 0;
+  13   1              unsigned char i, j, freeSize = 0,freePos[64];
   14   1              for (i = 0; i < 8; i++)
   15   1                      for (j = 0; j < 8; j++)
   16   1                              if (redMatrix[i][j] == 0)
@@ -29,41 +29,43 @@ line level    source
   20          
   21          void foodsetPos(Food *food, unsigned char pos)
   22          {
-  23   1              (*food).x = intToPoint(pos).x;
-  24   1              (*food).y = intToPoint(pos).y;
-  25   1              (*food).count = 1;
-  26   1      }
-  27          
-  28          unsigned char foodEaten(Food *food)
-  29          {
-  30   1              if (!foodExist(food))
-  31   1                      return 0;
-  32   1              (*food).count = 0;
-  33   1              initGreenMatrix();
-  34   1              return 1;
-  35   1      }
-  36          
-  37          unsigned char foodExist(Food * food) { return (*food).count == 0 ? 0 : 1; }
-  38          
-  39          void foodShow(Food *food)
-  40          {
-  41   1              if (!foodExist(food))
-  42   1                      return;
-  43   1              updateGreenMatXY((*food).x, (*food).y);
-  44   1      }
-  45          
+  23   1              (*food).position = intToPoint(pos);
+  24   1              (*food).exist = 1;
+  25   1      }
+  26          
+  27          unsigned char foodEaten(Food *food)
+  28          {
+  29   1              if (!foodExist(food))
+  30   1                      return 0;
+  31   1              (*food).exist = 0;
+  32   1              initGreenMatrix();
+  33   1              return 1;
+  34   1      }
+  35          
+  36          unsigned char foodExist(Food * food) 
+  37          { 
+  38   1              return (*food).exist; 
+  39   1      }
+  40          
+  41          void foodShow(Food *food)
+  42          {
+  43   1              if (!foodExist(food))
+  44   1                      return;
+  45   1              addPointToGreenMat((*food).position);
+  46   1      }
+  47          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    382    ----
+   CODE SIZE        =    366    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----      80
+   XDATA SIZE       =   ----      79
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
+C51 COMPILER V9.01   FOOD                                                                  05/25/2017 14:40:53 PAGE 2   
+
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V9.01   FOOD                                                                  05/24/2017 23:31:07 PAGE 2   
-
 END OF MODULE INFORMATION.
 
 
