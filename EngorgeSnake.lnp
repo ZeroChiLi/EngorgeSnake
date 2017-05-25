@@ -1,0 +1,11 @@
+"STARTUP.obj",
+"main.obj",
+"InitConst.obj",
+"InfraredInput.obj",
+"KeyboardInput.obj",
+"Point.obj",
+"Snake.obj",
+"Food.obj",
+"MatrixLED.obj" 
+TO "EngorgeSnake" 
+RAMSIZE(256) 

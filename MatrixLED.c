@@ -1,4 +1,4 @@
-#include "initGame.h"
+#include "MatrixLED.h"
 
 //ÁÐ ×óÖÁÓÒ
 unsigned char code COL[8] = { 0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe };
@@ -60,10 +60,10 @@ void updateCol()
 		}
 }
 
-void showMatrix(unsigned int delayTime)
+void showMatrix(unsigned int showTime)
 {
 	unsigned char col,k = 0;
-	for (delayTime; delayTime > 0; --delayTime)
+	for (; showTime > 0; --showTime)
 		for (col = 0; col < 8; col++)
 		{
 			READPORTS = 0xFF;
@@ -77,66 +77,3 @@ void showMatrix(unsigned int delayTime)
 		}
 }
 
-void movePoint(Point *p, Direction dir)
-{
-	if (!isDirection(dir))
-		dir = (*p).dir;
-	switch (dir)
-	{
-	case(UP):
-	{
-		(*p).dir = UP;
-		(*p).y = (*p).y == 1 ? 8 : (*p).y - 1;
-		break;
-	}
-	case(DOWN):
-	{
-		(*p).dir = DOWN;
-		(*p).y = (*p).y == 8 ? 1 : (*p).y + 1;
-		break;
-	}
-	case(LEFT):
-	{
-		(*p).dir = LEFT;
-		(*p).x = (*p).x == 1 ? 8 : (*p).x - 1;
-		break;
-	}
-	case(RIGHT):
-	{
-		(*p).dir = RIGHT;
-		(*p).x = (*p).x == 8 ? 1 : (*p).x + 1;
-		break;
-	}
-	default:
-		break;
-	}
-}
-
-unsigned char key_Scan() { return GPIO_KEY; }
-
-void delay10ms(unsigned int c)
-{
-	unsigned char a, b;
-	for (; c > 0; c--)
-		for (b = 38; b > 0; b--)
-			for (a = 130; a > 0; a--);
-}
-
-unsigned char isDirection(Direction dir)
-{
-	if (dir != UP && dir != DOWN && dir != LEFT &&  dir != RIGHT)
-		return 0;
-	return 1;
-}
-
-unsigned char pointToInt(const Point p) { return (p.y - 1) * 8 + (p.x - 1); }
-
-unsigned char xyToInt(const int x, const int y) { return (y - 1) * 8 + (x - 1); }
-
-Point intToPoint(unsigned char num)
-{
-	Point p;
-	p.x = num % 8 + 1;
-	p.y = num / 8 + 1;
-	return p;
-}

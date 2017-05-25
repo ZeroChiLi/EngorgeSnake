@@ -43,7 +43,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>frist</OutputName>
+          <OutputName>EngorgeSnake</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -352,39 +352,79 @@
               <FilePath>.\STARTUP.A51</FilePath>
             </File>
             <File>
-              <FileName>initGame.h</FileName>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>InitConst.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\InitConst.c</FilePath>
+            </File>
+            <File>
+              <FileName>InitConst.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\initGame.h</FilePath>
+              <FilePath>.\InitConst.h</FilePath>
             </File>
             <File>
-              <FileName>initGame.c</FileName>
+              <FileName>InfraredInput.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\initGame.c</FilePath>
+              <FilePath>.\InfraredInput.c</FilePath>
             </File>
             <File>
-              <FileName>snake.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\snake.c</FilePath>
-            </File>
-            <File>
-              <FileName>snake.h</FileName>
+              <FileName>InfraredInput.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\snake.h</FilePath>
+              <FilePath>.\InfraredInput.h</FilePath>
             </File>
             <File>
-              <FileName>feed.c</FileName>
+              <FileName>KeyboardInput.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\feed.c</FilePath>
+              <FilePath>.\KeyboardInput.c</FilePath>
             </File>
             <File>
-              <FileName>feed.h</FileName>
+              <FileName>KeyboardInput.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\feed.h</FilePath>
+              <FilePath>.\KeyboardInput.h</FilePath>
             </File>
             <File>
-              <FileName>engorgeSnake.c</FileName>
+              <FileName>Point.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\engorgeSnake.c</FilePath>
+              <FilePath>.\Point.c</FilePath>
+            </File>
+            <File>
+              <FileName>Point.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Point.h</FilePath>
+            </File>
+            <File>
+              <FileName>Snake.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Snake.c</FilePath>
+            </File>
+            <File>
+              <FileName>Snake.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Snake.h</FilePath>
+            </File>
+            <File>
+              <FileName>Food.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Food.c</FilePath>
+            </File>
+            <File>
+              <FileName>Food.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Food.h</FilePath>
+            </File>
+            <File>
+              <FileName>MatrixLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MatrixLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>MatrixLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MatrixLED.h</FilePath>
             </File>
           </Files>
         </Group>

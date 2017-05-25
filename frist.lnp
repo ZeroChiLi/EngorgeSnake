@@ -1,7 +1,0 @@
-"STARTUP.obj",
-"initGame.obj",
-"snake.obj",
-"feed.obj",
-"engorgeSnake.obj" 
-TO "frist" 
-RAMSIZE(256) 

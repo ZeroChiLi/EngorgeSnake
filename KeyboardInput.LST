@@ -1,0 +1,32 @@
+C51 COMPILER V9.01   KEYBOARDINPUT                                                         05/24/2017 23:27:58 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE KEYBOARDINPUT
+OBJECT MODULE PLACED IN KeyboardInput.OBJ
+COMPILER INVOKED BY: D:\Program\Keil\C51\BIN\C51.EXE KeyboardInput.c LARGE BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          #include "KeyboardInput.h"
+   3          
+   4          
+   5          unsigned char key_Scan() 
+   6          { 
+   7   1              return GPIO_KEY; 
+   8   1      }
+   9          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      3    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
