@@ -4,15 +4,15 @@
 #include <reg51.h>
 #include "InitConst.h"	 
 
-#define GPIO_KEY		P1  //独立键盘用P1口
+#define GPIO_KEY		P3  //独立键盘用P3口
 
 //检测按键
-extern unsigned char key_Scan();
+extern unsigned char Key_Scan();
 
 //按键转换成方向
-extern Direction getDirectionFromKey(unsigned char key);
+extern Direction GetDirectionFromKey(unsigned char key);
 
 //是否按了重启游戏
-extern unsigned char onClickRestartKey(unsigned char key);
+extern unsigned char OnClickRestartKey(unsigned char key);
 
 #endif

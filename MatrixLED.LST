@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MATRIXLED                                                             05/25/2017 14:40:53 PAGE 1   
+C51 COMPILER V9.01   MATRIXLED                                                             05/25/2017 16:46:33 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MATRIXLED
@@ -12,87 +12,84 @@ line level    source
    3          //列 左至右
    4          unsigned char code COL[8] = { 0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe };
    5          
-   6          //索引代表列,数值代表该列的当前值
-   7          unsigned char currentRedCOL[8];
-   8          
-   9          unsigned char currentGreenCOL[8];
-  10          
-  11          //当前红点阵是否亮着
-  12          unsigned char redMatrix[8][8];
+   6          unsigned char _currentRedCOL[8];         
+   7          
+   8          unsigned char _currentGreenCOL[8];
+   9          
+  10          unsigned char _redMatrix[8][8];
+  11          
+  12          unsigned char _greenMatrix[8][8];
   13          
-  14          //当前绿点阵是否亮着
-  15          unsigned char greenMatrix[8][8];
-  16          
-  17          void initRedMatrix()
-  18          {
-  19   1              unsigned char i, j;
-  20   1              for (i = 0; i < 8; i++)
-  21   1                      for (j = 0; j < 8; j++)
-  22   1                              redMatrix[i][j] = 0;
-  23   1      }
-  24          
-  25          void initGreenMatrix()
-  26          {
-  27   1              unsigned char i, j;
-  28   1              for (i = 0; i < 8; i++)
-  29   1                      for (j = 0; j < 8; j++)
-  30   1                              greenMatrix[i][j] = 0;
-  31   1      }
-  32          
-  33          void initCurrentCOL()
-  34          {
-  35   1              unsigned char i;
-  36   1              for (i = 0; i < 8; i++)
-  37   1                      currentRedCOL[i] = 0x00;
-  38   1      }
-  39          
-  40          void addPointToRedMat(const Point point) 
-  41          {
-  42   1              redMatrix[point.y - 1][point.x - 1] = 1; 
-  43   1      }
-  44          
-  45          void addPointToGreenMat(const Point point) 
-  46          { 
-  47   1              greenMatrix[point.y - 1][point.x - 1] = 1; 
-  48   1      }
-  49          
-  50          
-  51          void updateCol()
-  52          {
-  53   1              unsigned char i, j;
-  54   1              initCurrentCOL();
-  55   1              for (i = 0; i < 8; i++)
-C51 COMPILER V9.01   MATRIXLED                                                             05/25/2017 14:40:53 PAGE 2   
+  14          void InitRedMatrix()
+  15          {
+  16   1              unsigned char i, j;
+  17   1              for (i = 0; i < 8; i++)
+  18   1                      for (j = 0; j < 8; j++)
+  19   1                              _redMatrix[i][j] = 0;
+  20   1      }
+  21          
+  22          void InitGreenMatrix()
+  23          {
+  24   1              unsigned char i, j;
+  25   1              for (i = 0; i < 8; i++)
+  26   1                      for (j = 0; j < 8; j++)
+  27   1                              _greenMatrix[i][j] = 0;
+  28   1      }
+  29          
+  30          void InitCurrentCOL()
+  31          {
+  32   1              unsigned char i;
+  33   1              for (i = 0; i < 8; i++)
+  34   1                      _currentRedCOL[i] = 0x00;
+  35   1      }
+  36          
+  37          void AddPointToRedMat(const Point point) 
+  38          {
+  39   1              _redMatrix[point.y - 1][point.x - 1] = 1; 
+  40   1      }
+  41          
+  42          void AddPointToGreenMat(const Point point) 
+  43          { 
+  44   1              _greenMatrix[point.y - 1][point.x - 1] = 1; 
+  45   1      }
+  46          
+  47          
+  48          void updateCol()
+  49          {
+  50   1              unsigned char i, j;
+  51   1              InitCurrentCOL();
+  52   1              for (i = 0; i < 8; i++)
+  53   1                      for (j = 0; j < 8; j++)
+  54   1                      {
+  55   2                              _currentRedCOL[i] |= _redMatrix[j][i] ;
+C51 COMPILER V9.01   MATRIXLED                                                             05/25/2017 16:46:33 PAGE 2   
 
-  56   1                      for (j = 0; j < 8; j++)
-  57   1                      {
-  58   2                              currentRedCOL[i] |= redMatrix[j][i] ;
-  59   2                              currentGreenCOL[i] |= greenMatrix[j][i];
-  60   2                              if (j < 7)
-  61   2                              {
-  62   3                                      currentRedCOL[i] <<= 1;
-  63   3                                      currentGreenCOL[i] <<= 1;
-  64   3                              }
-  65   2                      }
-  66   1      }
-  67          
-  68          void showMatrix(unsigned int showTime)
-  69          {
-  70   1              unsigned char col,k = 0;
-  71   1              for (; showTime > 0; --showTime)
-  72   1                      for (col = 0; col < 8; col++)
-  73   1                      {
-  74   2                              READPORTS = 0xFF;
-  75   2                              GREENPORTS = 0xFF;
+  56   2                              _currentGreenCOL[i] |= _greenMatrix[j][i];
+  57   2                              if (j < 7)
+  58   2                              {
+  59   3                                      _currentRedCOL[i] <<= 1;
+  60   3                                      _currentGreenCOL[i] <<= 1;
+  61   3                              }
+  62   2                      }
+  63   1      }
+  64          
+  65          void ShowMatrix(unsigned int showTime)
+  66          {
+  67   1              unsigned char col,k = 0;
+  68   1              for (; showTime > 0; --showTime)
+  69   1                      for (col = 0; col < 8; col++)
+  70   1                      {
+  71   2                              READPORTS = 0xFF;               
+  72   2                              GREENPORTS = 0xFF;      
+  73   2      
+  74   2                              COMMONPORTS = _currentRedCOL[col]; 
+  75   2                              READPORTS = COL[col];            
   76   2      
-  77   2                              COMMONPORTS = currentRedCOL[col]; 
-  78   2                              READPORTS = COL[col];            
-  79   2      
-  80   2                              COMMONPORTS = currentGreenCOL[col];
-  81   2                              GREENPORTS = COL[col];                  
-  82   2                      }
-  83   1      }
-  84          
+  77   2                              COMMONPORTS = _currentGreenCOL[col];
+  78   2                              GREENPORTS = COL[col];   
+  79   2                      }
+  80   1      }
+  81          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

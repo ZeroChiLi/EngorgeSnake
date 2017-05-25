@@ -18,27 +18,27 @@ typedef struct SNAKE
 }Snake;
 
 //默认初始化蛇
-extern void initSnake(Snake * snake);
+extern void InitSnake(Snake * snake);
 
 //设置头位置
-extern unsigned char snakeSetHead(Snake * snake, Point point);
+extern unsigned char SnakeSetHead(Snake * snake, Point point);
 
 //长身体咯
-extern void snakeAddBody(Snake * snake, Point point);
+extern void SnakeAddBody(Snake * snake, Point point);
 
 //获取头指针
-extern Point * snakeGetHead(Snake * snake);
+extern Point * SnakeGetHead(Snake * snake);
 
 //设置方向,依据头
-extern void snakeSetDir(Snake * snake, Direction dir);
+extern void SnakeSetDir(Snake * snake, Direction dir);
 
 //判断碰撞 ,返回1为碰撞,如果碰到食物,就变长
-extern unsigned char snakeCollision(Snake *snake,Food *food);
+extern unsigned char SnakeCollision(Snake *snake,Food *food);
 
 //更新蛇位置，包括头
-extern void snakeMove(Snake *snake);
+extern void SnakeMove(Snake *snake);
 
 //移动的头位置
-extern void snakeHeadMove(Snake *snake);
+extern void SnakeHeadMove(Snake *snake);
 
 #endif

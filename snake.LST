@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   SNAKE                                                                 05/25/2017 14:40:53 PAGE 1   
+C51 COMPILER V9.01   SNAKE                                                                 05/25/2017 16:46:33 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE SNAKE
@@ -10,33 +10,33 @@ line level    source
    1          #include "Snake.h"
    2          #include "MatrixLED.h"
    3          
-   4          void initSnake(Snake * snake)
+   4          void InitSnake(Snake * snake)
    5          {
    6   1              Point p;
    7   1              p.x = 5;
    8   1              p.y = 6;
    9   1              (*snake)._direction = UP;
   10   1              (*snake)._length = 0;
-  11   1              snakeSetHead(snake, p);
+  11   1              SnakeSetHead(snake, p);
   12   1      }
   13          
-  14          unsigned char snakeSetHead(Snake * snake, Point point)
+  14          unsigned char SnakeSetHead(Snake * snake, Point point)
   15          {
   16   1              if (snake == 0)
   17   1                      return 0;
-  18   1              snakeAddBody(snake, point);
+  18   1              SnakeAddBody(snake, point);
   19   1              return 1;
   20   1      }
   21          
-  22          void snakeAddBody(Snake *snake, Point point)
+  22          void SnakeAddBody(Snake *snake, Point point)
   23          {
   24   1              (*snake)._body[(*snake)._length] = point;
   25   1              ++(*snake)._length;
   26   1      }
   27          
-  28          Point * snakeGetHead(Snake * snake) { return &((*snake)._body[0]); }
+  28          Point * SnakeGetHead(Snake * snake) { return &((*snake)._body[0]); }
   29          
-  30          void snakeSetDir(Snake * snake, Direction dir) 
+  30          void SnakeSetDir(Snake * snake, Direction dir) 
   31          { 
   32   1              if (((*snake)._direction == UP && dir == DOWN) ||
   33   1                      ((*snake)._direction == DOWN && dir == UP) ||
@@ -46,7 +46,7 @@ line level    source
   37   1              (*snake)._direction = dir; 
   38   1      }
   39          
-  40          unsigned char snakeCollision(Snake *snake, Food *food)
+  40          unsigned char SnakeCollision(Snake *snake, Food *food)
   41          {
   42   1              unsigned char headX = (*snake)._body[0].x;
   43   1              unsigned char headY = (*snake)._body[0].y;
@@ -55,35 +55,35 @@ line level    source
   46   1                      if (headX == (*food).position.x && headY == (*food).position.y)
   47   1                      {
   48   2                              ++(*snake)._length;
-  49   2                              foodEaten(food);
+  49   2                              FoodEaten(food);
   50   2                              return 0;
   51   2                      }
   52   1              //碰撞自己身体
   53   1              for (; i < (*snake)._length; ++i)
   54   1                      if (headX == (*snake)._body[i].x && headY == (*snake)._body[i].y)
   55   1                              return 1;
-C51 COMPILER V9.01   SNAKE                                                                 05/25/2017 14:40:53 PAGE 2   
+C51 COMPILER V9.01   SNAKE                                                                 05/25/2017 16:46:33 PAGE 2   
 
   56   1              return 0;
   57   1      }
   58          
-  59          void snakeMove(Snake *snake)
+  59          void SnakeMove(Snake *snake)
   60          {
   61   1              unsigned char i = (*snake)._length - 1;
   62   1              for (; i >= 1; --i)
   63   1              {
   64   2                      (*snake)._body[i] = (*snake)._body[i - 1];
-  65   2                      addPointToRedMat((*snake)._body[i]);
+  65   2                      AddPointToRedMat((*snake)._body[i]);
   66   2              }
   67   1      
-  68   1              snakeHeadMove(snake);     
-  69   1              addPointToRedMat(*snakeGetHead(snake));
+  68   1              SnakeHeadMove(snake);     
+  69   1              AddPointToRedMat(*SnakeGetHead(snake));
   70   1      }
   71          
   72          
-  73          void snakeHeadMove(Snake *snake)
+  73          void SnakeHeadMove(Snake *snake)
   74          {
-  75   1              Point * head = snakeGetHead(snake);
+  75   1              Point * head = SnakeGetHead(snake);
   76   1              Direction dir = (*snake)._direction;
   77   1      
   78   1              switch (dir)

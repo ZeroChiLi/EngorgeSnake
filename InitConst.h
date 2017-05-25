@@ -6,7 +6,7 @@
 
 #define COMMONPORTS		P0	//点阵行控
 #define READPORTS 		P2	//点阵列控 红色
-#define GREENPORTS 		P3  //点阵列控 绿色
+#define GREENPORTS 		P1  //点阵列控 绿色
 
 
 //方向,独立键盘 k3 k6 k7 k8
@@ -21,6 +21,6 @@ typedef enum DIRECTION
 
 
 //判断是否为方向
-extern unsigned char isDirection(Direction dir);
+extern unsigned char IsDirection(Direction dir);
 
 #endif

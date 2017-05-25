@@ -2,12 +2,12 @@
 #include "KeyboardInput.h"
 
 
-unsigned char key_Scan() 
+unsigned char Key_Scan() 
 { 
 	return GPIO_KEY; 
 }
 
-Direction getDirectionFromKey(unsigned char key)
+Direction GetDirectionFromKey(unsigned char key)
 {
 	switch(key)
 	{
@@ -23,7 +23,7 @@ Direction getDirectionFromKey(unsigned char key)
 	return NONE;
 }
 
-unsigned char onClickRestartKey(unsigned char key)
+unsigned char OnClickRestartKey(unsigned char key)
 {
 	return key == 0xFE;
 }

@@ -1,33 +1,33 @@
 #include "Snake.h"
 #include "MatrixLED.h"
 
-void initSnake(Snake * snake)
+void InitSnake(Snake * snake)
 {
 	Point p;
 	p.x = 5;
 	p.y = 6;
 	(*snake)._direction = UP;
 	(*snake)._length = 0;
-	snakeSetHead(snake, p);
+	SnakeSetHead(snake, p);
 }
 
-unsigned char snakeSetHead(Snake * snake, Point point)
+unsigned char SnakeSetHead(Snake * snake, Point point)
 {
 	if (snake == 0)
 		return 0;
-	snakeAddBody(snake, point);
+	SnakeAddBody(snake, point);
 	return 1;
 }
 
-void snakeAddBody(Snake *snake, Point point)
+void SnakeAddBody(Snake *snake, Point point)
 {
 	(*snake)._body[(*snake)._length] = point;
 	++(*snake)._length;
 }
 
-Point * snakeGetHead(Snake * snake) { return &((*snake)._body[0]); }
+Point * SnakeGetHead(Snake * snake) { return &((*snake)._body[0]); }
 
-void snakeSetDir(Snake * snake, Direction dir) 
+void SnakeSetDir(Snake * snake, Direction dir) 
 { 
 	if (((*snake)._direction == UP && dir == DOWN) ||
 		((*snake)._direction == DOWN && dir == UP) ||
@@ -37,7 +37,7 @@ void snakeSetDir(Snake * snake, Direction dir)
 	(*snake)._direction = dir; 
 }
 
-unsigned char snakeCollision(Snake *snake, Food *food)
+unsigned char SnakeCollision(Snake *snake, Food *food)
 {
 	unsigned char headX = (*snake)._body[0].x;
 	unsigned char headY = (*snake)._body[0].y;
@@ -46,7 +46,7 @@ unsigned char snakeCollision(Snake *snake, Food *food)
 		if (headX == (*food).position.x && headY == (*food).position.y)
 		{
 			++(*snake)._length;
-			foodEaten(food);
+			FoodEaten(food);
 			return 0;
 		}
 	//碰撞自己身体
@@ -56,23 +56,23 @@ unsigned char snakeCollision(Snake *snake, Food *food)
 	return 0;
 }
 
-void snakeMove(Snake *snake)
+void SnakeMove(Snake *snake)
 {
 	unsigned char i = (*snake)._length - 1;
 	for (; i >= 1; --i)
 	{
 		(*snake)._body[i] = (*snake)._body[i - 1];
-		addPointToRedMat((*snake)._body[i]);
+		AddPointToRedMat((*snake)._body[i]);
 	}
 
-	snakeHeadMove(snake);	  
-	addPointToRedMat(*snakeGetHead(snake));
+	SnakeHeadMove(snake);	  
+	AddPointToRedMat(*SnakeGetHead(snake));
 }
 
 
-void snakeHeadMove(Snake *snake)
+void SnakeHeadMove(Snake *snake)
 {
-	Point * head = snakeGetHead(snake);
+	Point * head = SnakeGetHead(snake);
 	Direction dir = (*snake)._direction;
 
 	switch (dir)

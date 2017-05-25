@@ -3,82 +3,79 @@
 //列 左至右
 unsigned char code COL[8] = { 0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe };
 
-//索引代表列,数值代表该列的当前值
-unsigned char currentRedCOL[8];
+unsigned char _currentRedCOL[8];	 
 
-unsigned char currentGreenCOL[8];
+unsigned char _currentGreenCOL[8];
 
-//当前红点阵是否亮着
-unsigned char redMatrix[8][8];
+unsigned char _redMatrix[8][8];
 
-//当前绿点阵是否亮着
-unsigned char greenMatrix[8][8];
+unsigned char _greenMatrix[8][8];
 
-void initRedMatrix()
+void InitRedMatrix()
 {
 	unsigned char i, j;
 	for (i = 0; i < 8; i++)
 		for (j = 0; j < 8; j++)
-			redMatrix[i][j] = 0;
+			_redMatrix[i][j] = 0;
 }
 
-void initGreenMatrix()
+void InitGreenMatrix()
 {
 	unsigned char i, j;
 	for (i = 0; i < 8; i++)
 		for (j = 0; j < 8; j++)
-			greenMatrix[i][j] = 0;
+			_greenMatrix[i][j] = 0;
 }
 
-void initCurrentCOL()
+void InitCurrentCOL()
 {
 	unsigned char i;
 	for (i = 0; i < 8; i++)
-		currentRedCOL[i] = 0x00;
+		_currentRedCOL[i] = 0x00;
 }
 
-void addPointToRedMat(const Point point) 
+void AddPointToRedMat(const Point point) 
 {
-	redMatrix[point.y - 1][point.x - 1] = 1; 
+	_redMatrix[point.y - 1][point.x - 1] = 1; 
 }
 
-void addPointToGreenMat(const Point point) 
+void AddPointToGreenMat(const Point point) 
 { 
-	greenMatrix[point.y - 1][point.x - 1] = 1; 
+	_greenMatrix[point.y - 1][point.x - 1] = 1; 
 }
 
 
 void updateCol()
 {
 	unsigned char i, j;
-	initCurrentCOL();
+	InitCurrentCOL();
 	for (i = 0; i < 8; i++)
 		for (j = 0; j < 8; j++)
 		{
-			currentRedCOL[i] |= redMatrix[j][i] ;
-			currentGreenCOL[i] |= greenMatrix[j][i];
+			_currentRedCOL[i] |= _redMatrix[j][i] ;
+			_currentGreenCOL[i] |= _greenMatrix[j][i];
 			if (j < 7)
 			{
-				currentRedCOL[i] <<= 1;
-				currentGreenCOL[i] <<= 1;
+				_currentRedCOL[i] <<= 1;
+				_currentGreenCOL[i] <<= 1;
 			}
 		}
 }
 
-void showMatrix(unsigned int showTime)
+void ShowMatrix(unsigned int showTime)
 {
 	unsigned char col,k = 0;
 	for (; showTime > 0; --showTime)
 		for (col = 0; col < 8; col++)
 		{
-			READPORTS = 0xFF;
-			GREENPORTS = 0xFF;
+			READPORTS = 0xFF;	   	
+			GREENPORTS = 0xFF;	
 
-			COMMONPORTS = currentRedCOL[col]; 
+			COMMONPORTS = _currentRedCOL[col]; 
 			READPORTS = COL[col];		 
 
-			COMMONPORTS = currentGreenCOL[col];
-			GREENPORTS = COL[col];	 		
+			COMMONPORTS = _currentGreenCOL[col];
+			GREENPORTS = COL[col];	 
 		}
 }
 

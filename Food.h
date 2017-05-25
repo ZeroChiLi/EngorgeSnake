@@ -11,22 +11,22 @@ typedef struct Food
 
 
 //初始化食物
-extern void initFood(Food *food);
+extern void InitFood(Food *food);
 
 //取得随机除了红点的位置
-extern unsigned char getRandomFreePos();
+extern unsigned char GetRandomFreePos();
 
 //设置食物位置
-extern void foodsetPos(Food *food,unsigned char pos);
+extern void FoodsetPos(Food *food,unsigned char pos);
 
 //返回0表示本来就没有足够食物
-extern unsigned char foodEaten(Food *food);
+extern unsigned char FoodEaten(Food *food);
 
 //判断是否存在食物
-extern unsigned char foodExist(Food * food);
+extern unsigned char FoodExist(Food * food);
 
 //显示食物
-extern void foodShow(Food *food);
+extern void FoodShow(Food *food);
 
 
 #endif

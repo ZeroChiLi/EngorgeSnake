@@ -2,12 +2,15 @@
 #include "Snake.h"
 #include "Food.h"
 #include "KeyboardInput.h"
+#include "InfraredInput.h"
 
-void startGame(Snake * snake,Food * food);
+void StartGame(Snake * snake,Food * food);
 
-unsigned char updateByKeyboard(Snake * snake, Food * food);
+unsigned char UpdateByKeyboard(Snake * snake);
 
-void updateFood(Food * food);
+unsigned char UpdateByInfrared(Snake * snake);
+								
+void UpdateFood(Food * food);
 
 void main(void)
 {		 
@@ -15,52 +18,72 @@ void main(void)
 	Snake snake;
 	Food food;
 
-	startGame(&snake,&food);							//初始化游戏成员对象
+	IrInit();
+
+	StartGame(&snake,&food);							//初始化游戏成员对象
 
 	while (1)
 	{			
-		initRedMatrix();	   							//初始化红绿点阵				
-		initGreenMatrix();	  
+		InitRedMatrix();	   							//初始化红绿点阵				
+		InitGreenMatrix();	  
 
-	//	if(updateByKeyboard(&snake,&food) == 0)			//通过键盘更新蛇方向，重启游戏。
-	//		continue;
+		SnakeMove(&snake);								//更新蛇位置
 
-		snakeMove(&snake);								//更新蛇位置
-
-		updateFood(&food);								//更新食物
+		UpdateFood(&food);								//更新食物
 							 
-		updateCol();									//更新每列数值
+		UpdateCol();									//更新每列数值
 
-		showMatrix(1000);								//显示红绿点阵
+		ShowMatrix(1000);								//显示红绿点阵
 
-		if (snakeCollision(&snake, &food) || updateByKeyboard(&snake,&food) == 0)				//检测碰撞(包括吃食物)
-			startGame(&snake,&food);
+		//检测碰撞(包括吃食物),碰到自己返回1，如果输入到重启键，返回0
+		if (SnakeCollision(&snake, &food) || UpdateByKeyboard(&snake) == 0 || UpdateByInfrared(&snake) == 0)				
+			StartGame(&snake,&food);
 	}
 }
 
-void startGame(Snake * snake, Food * food)
+void StartGame(Snake * snake, Food * food)
 {
-	initSnake(snake);
-	initFood(food);
+	InitSnake(snake);
+	InitFood(food);
 }
 	   
-unsigned char updateByKeyboard(Snake * snake, Food * food)
+void UpdateFood(Food * food)
+{
+	if (!FoodExist(food))							//判断是否存在食物,没有就加啊
+		FoodsetPos(food, GetRandomFreePos());
+	
+	FoodShow(food);								//显示食物
+}
+
+unsigned char UpdateByKeyboard(Snake * snake)
 {		 
 	unsigned char keyNum = 0;
-    keyNum = key_Scan();									//扫描键盘
 
-	if (isDirection(getDirectionFromKey(keyNum)))		 	//判断是否为方向
-		snakeSetDir(snake, getDirectionFromKey(keyNum));
+    keyNum = Key_Scan();									//扫描键盘
 
-	if (onClickRestartKey(keyNum))							//按了key1就是重启游戏
+	if (IsDirection(GetDirectionFromKey(keyNum)))		 	//判断是否为方向
+		SnakeSetDir(snake, GetDirectionFromKey(keyNum));
+
+	if (OnClickRestartKey(keyNum))							//按了key1就是重启游戏
 		return 0;
 	return 1;
 }
 
-void updateFood(Food * food)
+
+unsigned char UpdateByInfrared(Snake * snake)
 {
-	if (!foodExist(food))							//判断是否存在食物,没有就加啊
-		foodsetPos(food, getRandomFreePos());
-	
-	foodShow(food);								//显示食物
+    unsigned char currentValue = 0;
+
+	currentValue = GetCurrentKey();
+			  
+	if (IsDirection(GetDirectionFromControlValue(currentValue)))
+		SnakeSetDir(snake, GetDirectionFromControlValue(currentValue));
+
+	if (OnClickPowerControlKey(currentValue))
+		return 0;
+	return 1;
 }
+
+
+
+

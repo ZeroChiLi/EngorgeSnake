@@ -2,7 +2,7 @@
 #include "InitConst.h"
 
 
-unsigned char isDirection(Direction dir)
+unsigned char IsDirection(Direction dir)
 {
 	if (dir != UP && dir != DOWN && dir != LEFT &&  dir != RIGHT)
 		return 0;

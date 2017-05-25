@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   INFRAREDINPUT                                                         05/25/2017 14:40:53 PAGE 1   
+C51 COMPILER V9.01   INFRAREDINPUT                                                         05/25/2017 16:46:33 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE INFRAREDINPUT
@@ -7,12 +7,134 @@ COMPILER INVOKED BY: D:\Program\Keil\C51\BIN\C51.EXE InfraredInput.c LARGE BROWS
 
 line level    source
 
+   1          #include "InfraredInput.h"
+   2          
+   3          unsigned char IrValue[6];         //用来存放读取到的红外值
+   4          
+   5          unsigned char _time;
+   6          
+   7                          
+   8          void DelayMs(unsigned int x)   //0.14ms误差 0us
+   9          {
+  10   1              unsigned char i;
+  11   1              while(x--)
+  12   1              {
+  13   2                      for (i = 0; i<13; i++)
+  14   2                      {}
+  15   2              }
+  16   1      }
+  17          
+  18          void IrInit()
+  19          {
+  20   1              IT0=1;//下降沿触发
+  21   1              EX0=1;//打开中断0允许
+  22   1              EA=1;   //打开总中断
+  23   1      
+  24   1              IRIN=1;//初始化端口
+  25   1      }
+  26          
+  27          
+  28          unsigned char GetCurrentKey()
+  29          {
+  30   1              return IrValue[2];
+  31   1      }
+  32          
+  33          unsigned char OnClickPowerControlKey(unsigned char controlKey)
+  34          {
+  35   1              return controlKey == 0x45;
+  36   1      }
+  37          
+  38          Direction GetDirectionFromControlValue(unsigned char controlKey)
+  39          {
+  40   1              switch(controlKey)
+  41   1              {
+  42   2              case 0x1c:
+  43   2                      return UP;      
+  44   2              case 0x42:
+  45   2                      return LEFT;
+  46   2              case 0x52:
+  47   2                      return DOWN;
+  48   2              case 0x4a:
+  49   2                      return RIGHT;
+  50   2              }
+  51   1              return NONE;
+  52   1      }
+  53          
+  54          
+  55          void ReadIr() interrupt 0 
+C51 COMPILER V9.01   INFRAREDINPUT                                                         05/25/2017 16:46:33 PAGE 2   
+
+  56          {
+  57   1              unsigned char j,k;
+  58   1              unsigned int err;
+  59   1              _time=0;                                         
+  60   1              //DelayMs(70);
+  61   1      
+  62   1              if(IRIN==0)             //确认是否真的接收到正确的信号
+  63   1              {        
+  64   2                      
+  65   2                      err=1000;                               //1000*10us=10ms,超过说明接收到错误的信号
+  66   2                      /*当两个条件都为真是循环，如果有一个条件为假的时候跳出循环，免得程序出错的时
+  67   2                      侯，程序死在这里*/      
+  68   2                      while((IRIN==0)&&(err>0))       //等待前面9ms的低电平过去               
+  69   2                      {                       
+  70   3                              DelayMs(1);
+  71   3                              err--;
+  72   3                      } 
+  73   2                      if(IRIN==1)                     //如果正确等到9ms低电平
+  74   2                      {
+  75   3                              err=500;
+  76   3                              while((IRIN==1)&&(err>0))                //等待4.5ms的起始高电平过去
+  77   3                              {
+  78   4                                      DelayMs(1);
+  79   4                                      err--;
+  80   4                              }
+  81   3                              for(k=0;k<4;k++)                //共有4组数据
+  82   3                              {                               
+  83   4                                      for(j=0;j<8;j++)        //接收一组数据
+  84   4                                      {
+  85   5      
+  86   5                                              err=60;         
+  87   5                                              while((IRIN==0)&&(err>0))//等待信号前面的560us低电平过去
+  88   5                                              {
+  89   6                                                      DelayMs(1);
+  90   6                                                      err--;
+  91   6                                              }
+  92   5                                              err=500;
+  93   5                                              while((IRIN==1)&&(err>0))        //计算高电平的时间长度。
+  94   5                                              {
+  95   6                                                      DelayMs(1);//0.14ms
+  96   6                                                      _time++;
+  97   6                                                      err--;
+  98   6                                                      if(_time>30)
+  99   6                                                      {
+ 100   7                                                              EX0=1;
+ 101   7                                                              return;
+ 102   7                                                      }
+ 103   6                                              }
+ 104   5                                              IrValue[k]>>=1;  //k表示第几组数据
+ 105   5                                              if(_time>=8)                    //如果高电平出现大于565us，那么是1
+ 106   5                                              {
+ 107   6                                                      IrValue[k]|=0x80;
+ 108   6                                              }
+ 109   5                                              _time=0;                //用完时间要重新赋值                                                    
+ 110   5                                      }
+ 111   4                              }
+ 112   3                      }
+ 113   2                      if(IrValue[2]!=~IrValue[3])
+ 114   2                      {
+ 115   3                              return;
+ 116   3                      }
+ 117   2              }                       
+C51 COMPILER V9.01   INFRAREDINPUT                                                         05/25/2017 16:46:33 PAGE 3   
+
+ 118   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   ----    ----
+   CODE SIZE        =    407    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----    ----
+   XDATA SIZE       =      7       2
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

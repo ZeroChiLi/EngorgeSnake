@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MAIN                                                                  05/25/2017 14:40:52 PAGE 1   
+C51 COMPILER V9.01   MAIN                                                                  05/25/2017 16:46:33 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
@@ -11,77 +11,99 @@ line level    source
    2          #include "Snake.h"
    3          #include "Food.h"
    4          #include "KeyboardInput.h"
-   5          
-   6          void startGame(Snake * snake,Food * food);
-   7          
-   8          unsigned char updateByKeyboard(Snake * snake, Food * food);
-   9          
-  10          void updateFood(Food * food);
-  11          
-  12          void main(void)
-  13          {                
-  14   1              unsigned char keyNum = 0;
-  15   1              Snake snake;
-  16   1              Food food;
-  17   1      
-  18   1              startGame(&snake,&food);                                                        //初始化游戏成员对象
-  19   1      
-  20   1              while (1)
-  21   1              {                       
-  22   2                      initRedMatrix();                                                                //初始化红绿点阵                                
-  23   2                      initGreenMatrix();        
-  24   2      
-  25   2              //      if(updateByKeyboard(&snake,&food) == 0)                 //通过键盘更新蛇方向，重启游戏。
-  26   2              //              continue;
-  27   2      
-  28   2                      snakeMove(&snake);                                                              //更新蛇位置
+   5          #include "InfraredInput.h"
+   6          
+   7          void StartGame(Snake * snake,Food * food);
+   8          
+   9          unsigned char UpdateByKeyboard(Snake * snake);
+  10          
+  11          unsigned char UpdateByInfrared(Snake * snake);
+  12                                                                          
+  13          void UpdateFood(Food * food);
+  14          
+  15          void main(void)
+  16          {                
+  17   1              unsigned char keyNum = 0;
+  18   1              Snake snake;
+  19   1              Food food;
+  20   1      
+  21   1              IrInit();
+  22   1      
+  23   1              StartGame(&snake,&food);                                                        //初始化游戏成员对象
+  24   1      
+  25   1              while (1)
+  26   1              {                       
+  27   2                      InitRedMatrix();                                                                //初始化红绿点阵                                
+  28   2                      InitGreenMatrix();        
   29   2      
-  30   2                      updateFood(&food);                                                              //更新食物
-  31   2                                                               
-  32   2                      updateCol();                                                                    //更新每列数值
-  33   2      
-  34   2                      showMatrix(1000);                                                               //显示红绿点阵
+  30   2                      SnakeMove(&snake);                                                              //更新蛇位置
+  31   2      
+  32   2                      UpdateFood(&food);                                                              //更新食物
+  33   2                                                               
+  34   2                      UpdateCol();                                                                    //更新每列数值
   35   2      
-  36   2                      if (snakeCollision(&snake, &food) || updateByKeyboard(&snake,&food) == 0)                               //检测碰撞(包括吃食物)
-  37   2                              startGame(&snake,&food);
-  38   2              }
-  39   1      }
-  40          
-  41          void startGame(Snake * snake, Food * food)
-  42          {
-  43   1              initSnake(snake);
-  44   1              initFood(food);
-  45   1      }
-  46                     
-  47          unsigned char updateByKeyboard(Snake * snake, Food * food)
-  48          {                
-  49   1              unsigned char keyNum = 0;
-  50   1          keyNum = key_Scan();                                                                        //扫描键盘
-  51   1      
-  52   1              if (isDirection(getDirectionFromKey(keyNum)))                   //判断是否为方向
-  53   1                      snakeSetDir(snake, getDirectionFromKey(keyNum));
-  54   1      
-  55   1              if (onClickRestartKey(keyNum))                                                  //按了key1就是重启游戏
-C51 COMPILER V9.01   MAIN                                                                  05/25/2017 14:40:52 PAGE 2   
+  36   2                      ShowMatrix(1000);                                                               //显示红绿点阵
+  37   2      
+  38   2                      //检测碰撞(包括吃食物),碰到自己返回1，如果输入到重启键，返回0
+  39   2                      if (SnakeCollision(&snake, &food) || UpdateByKeyboard(&snake) == 0 || UpdateByInfrared(&snake) == 0)                            
+  40   2                              StartGame(&snake,&food);
+  41   2              }
+  42   1      }
+  43          
+  44          void StartGame(Snake * snake, Food * food)
+  45          {
+  46   1              InitSnake(snake);
+  47   1              InitFood(food);
+  48   1      }
+  49                     
+  50          void UpdateFood(Food * food)
+  51          {
+  52   1              if (!FoodExist(food))                                                   //判断是否存在食物,没有就加啊
+  53   1                      FoodsetPos(food, GetRandomFreePos());
+  54   1              
+  55   1              FoodShow(food);                                                         //显示食物
+C51 COMPILER V9.01   MAIN                                                                  05/25/2017 16:46:33 PAGE 2   
 
-  56   1                      return 0;
-  57   1              return 1;
-  58   1      }
-*** WARNING C280 IN LINE 47 OF MAIN.C: 'food': unreferenced local variable
-  59          
-  60          void updateFood(Food * food)
-  61          {
-  62   1              if (!foodExist(food))                                                   //判断是否存在食物,没有就加啊
-  63   1                      foodsetPos(food, getRandomFreePos());
-  64   1              
-  65   1              foodShow(food);                                                         //显示食物
-  66   1      }
+  56   1      }
+  57          
+  58          unsigned char UpdateByKeyboard(Snake * snake)
+  59          {                
+  60   1              unsigned char keyNum = 0;
+  61   1      
+  62   1          keyNum = Key_Scan();                                                                        //扫描键盘
+  63   1      
+  64   1              if (IsDirection(GetDirectionFromKey(keyNum)))                   //判断是否为方向
+  65   1                      SnakeSetDir(snake, GetDirectionFromKey(keyNum));
+  66   1      
+  67   1              if (OnClickRestartKey(keyNum))                                                  //按了key1就是重启游戏
+  68   1                      return 0;
+  69   1              return 1;
+  70   1      }
+  71          
+  72          
+  73          unsigned char UpdateByInfrared(Snake * snake)
+  74          {
+  75   1          unsigned char currentValue = 0;
+  76   1      
+  77   1              currentValue = GetCurrentKey();
+  78   1                                
+  79   1              if (IsDirection(GetDirectionFromControlValue(currentValue)))
+  80   1                      SnakeSetDir(snake, GetDirectionFromControlValue(currentValue));
+  81   1      
+  82   1              if (OnClickPowerControlKey(currentValue))
+  83   1                      return 0;
+  84   1              return 1;
+  85   1      }
+  86          
+  87          
+  88          
+  89          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    289    ----
+   CODE SIZE        =    342    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----     150
+   XDATA SIZE       =   ----     151
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
@@ -89,4 +111,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
