@@ -4,17 +4,6 @@ unsigned char IrValue[6];	  //用来存放读取到的红外值
 
 unsigned char _time;
 
- 		
-void DelayMs(unsigned int x)   //0.14ms误差 0us
-{
-	unsigned char i;
-	while(x--)
-	{
-		for (i = 0; i<13; i++)
-		{}
-	}
-}
-
 void IrInit()
 {
 	IT0=1;//下降沿触发

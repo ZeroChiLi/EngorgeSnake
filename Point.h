@@ -9,7 +9,7 @@ typedef struct POINT
 }Point;
 
 //点对象转换成整数值（8*8矩阵）
-extern unsigned char PointToInt(const Point p);
+//extern unsigned char PointToInt(const Point p);
 
 //XY坐标转换成整数值
 extern unsigned char XYToInt(const int x, const int y); 

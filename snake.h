@@ -7,14 +7,9 @@
 
 typedef struct SNAKE
 {
-	//运动方向
-	Direction _direction;
-
-	//身体长度，包括头
-	unsigned char _length;
-
-	//身体每个部位位置,0为头
-	Point _body[64];
+	Direction _direction;	 	//运动方向
+	unsigned char _length;		//身体长度，包括头
+	Point _body[64];	  		//身体每个部位位置,0为头
 }Snake;
 
 //默认初始化蛇

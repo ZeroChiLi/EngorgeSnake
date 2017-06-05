@@ -4,21 +4,24 @@
 #include "KeyboardInput.h"
 #include "InfraredInput.h"
 
-void StartGame(Snake * snake,Food * food);
+void StartGame(Snake * snake,Food * food);				//初始化蛇和食物
 
-unsigned char UpdateByKeyboard(Snake * snake);
+unsigned char UpdateByKeyboard(Snake * snake);		   	//根据键盘输入更新
 
-unsigned char UpdateByInfrared(Snake * snake);
+unsigned char UpdateByInfrared(Snake * snake);			//根据红外遥控输入更新
 								
-void UpdateFood(Food * food);
+void UpdateFood(Food * food);							//更新食物
 
 void main(void)
 {		 
-	unsigned char keyNum = 0;
-	Snake snake;
-	Food food;
+	unsigned char startPeriod = 1000;					//初始周期 ，越大越慢
+	unsigned char minPeriod = 500;						//最短周期
+	unsigned char gradient = 50;						//难度梯度
 
-	IrInit();
+	Snake snake;										//蛇对象
+	Food food;										   	//食物对象
+
+	IrInit(); 											//红瓦遥控初始化
 
 	StartGame(&snake,&food);							//初始化游戏成员对象
 
@@ -27,17 +30,21 @@ void main(void)
 		InitRedMatrix();	   							//初始化红绿点阵				
 		InitGreenMatrix();	  
 
+		//检测碰撞(包括吃食物),碰到自己返回1，如果输入到重启键，返回0
+		if (SnakeCollision(&snake, &food) || UpdateByKeyboard(&snake) == 0 || UpdateByInfrared(&snake) == 0)
+		{		
+			ShowExplode(500);		
+			StartGame(&snake,&food);
+			continue;
+		}
+
 		SnakeMove(&snake);								//更新蛇位置
 
 		UpdateFood(&food);								//更新食物
 							 
-		UpdateCol();									//更新每列数值
+		UpdateCol();									//检查并更新每列数值
 
-		ShowMatrix(1000);								//显示红绿点阵
-
-		//检测碰撞(包括吃食物),碰到自己返回1，如果输入到重启键，返回0
-		if (SnakeCollision(&snake, &food) || UpdateByKeyboard(&snake) == 0 || UpdateByInfrared(&snake) == 0)				
-			StartGame(&snake,&food);
+		ShowMatrix(getMax(startPeriod - snake._length,minPeriod));	//显示红绿点阵，参数是周期。
 	}
 }
 
@@ -83,7 +90,4 @@ unsigned char UpdateByInfrared(Snake * snake)
 		return 0;
 	return 1;
 }
-
-
-
 

@@ -6,9 +6,6 @@
 
 sbit IRIN = P3^2;
 
-	
-extern void DelayMs(unsigned int x);
-
 extern void IrInit();				
 		 
 extern void ReadIr();

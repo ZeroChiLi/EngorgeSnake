@@ -23,4 +23,11 @@ typedef enum DIRECTION
 //判断是否为方向
 extern unsigned char IsDirection(Direction dir);
 
+//延时
+extern void DelayMs(unsigned int x);
+				
+//获取两个数的最大值
+extern unsigned char getMax(unsigned char a,unsigned char b);	
+
+
 #endif

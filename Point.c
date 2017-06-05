@@ -1,11 +1,12 @@
 
 #include "Point.h"
 
-
+/*
 unsigned char pointToInt(const Point p) 
 { 
 	return (p.y - 1) * 8 + (p.x - 1); 
 }
+*/
 
 unsigned char XYToInt(const int x, const int y) 
 { 

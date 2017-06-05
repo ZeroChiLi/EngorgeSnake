@@ -39,7 +39,11 @@ extern void AddPointToGreenMat(const Point point);
 extern void UpdateCol();
 
 //显示当前点阵,更新时间
-extern void ShowMatrix(unsigned int showTime);
+extern void ShowMatrix(unsigned char showTime);
+
+//显示扩散特效
+extern void ShowExplode(unsigned char showTime);
+
 
 
 
