@@ -69,7 +69,7 @@ void updateCol()
 		}
 }
 
-void ShowMatrix(unsigned char showTime)
+void ShowMatrix(int showTime)
 {
 	unsigned char col,k = 0;
 	for (; showTime > 0; --showTime)
@@ -82,7 +82,7 @@ void ShowMatrix(unsigned char showTime)
 			READPORTS = COL[col];		 
 
 			COMMONPORTS = _currentGreenCOL[col];
-			GREENPORTS = COL[col];	
+			GREENPORTS = COL[col];		
 		}
 }
 

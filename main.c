@@ -14,9 +14,9 @@ void UpdateFood(Food * food);							//更新食物
 
 void main(void)
 {		 
-	unsigned char startPeriod = 1000;					//初始周期 ，越大越慢
-	unsigned char minPeriod = 500;						//最短周期
-	unsigned char gradient = 50;						//难度梯度
+	int startPeriod = 1000;								//初始周期 ，越大越慢
+	int minPeriod = 500;								//最短周期
+	int gradient = 50;									//难度梯度
 
 	Snake snake;										//蛇对象
 	Food food;										   	//食物对象
@@ -44,7 +44,7 @@ void main(void)
 							 
 		UpdateCol();									//检查并更新每列数值
 
-		ShowMatrix(getMax(startPeriod - snake._length,minPeriod));	//显示红绿点阵，参数是周期。
+		ShowMatrix(getMax(startPeriod - snake._length * gradient,minPeriod));	//显示红绿点阵，参数是周期。
 	}
 }
 
@@ -52,8 +52,7 @@ void StartGame(Snake * snake, Food * food)
 {
 	InitSnake(snake);
 	InitFood(food);
-}
-	   
+}	   
 void UpdateFood(Food * food)
 {
 	if (!FoodExist(food))							//判断是否存在食物,没有就加啊

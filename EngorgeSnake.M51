@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        06/05/2017  22:55:29  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/06/2017  14:55:13  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -26,6 +26,7 @@ INPUT MODULES INCLUDED:
   D:\PROGRAM\KEIL\C51\LIB\C51L.LIB (?C?CILDOPTR)
   D:\PROGRAM\KEIL\C51\LIB\C51L.LIB (?C?CSTPTR)
   D:\PROGRAM\KEIL\C51\LIB\C51L.LIB (?C?CSTOPTR)
+  D:\PROGRAM\KEIL\C51\LIB\C51L.LIB (?C?IMUL)
   D:\PROGRAM\KEIL\C51\LIB\C51L.LIB (?C?SIDIV)
   D:\PROGRAM\KEIL\C51\LIB\C51L.LIB (RAND)
   D:\PROGRAM\KEIL\C51\LIB\C51L.LIB (?C?UIDIV)
@@ -44,62 +45,62 @@ LINK MAP OF MODULE:  EngorgeSnake (?C_STARTUP)
             IDATA   0008H     0001H     UNIT         ?STACK
 
             * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
-            XDATA   0000H     00D8H     UNIT         _XDATA_GROUP_
-            XDATA   00D8H     00B8H     UNIT         ?XD?MATRIXLED
-            XDATA   0190H     0007H     UNIT         ?XD?INFRAREDINPUT
-            XDATA   0197H     0004H     UNIT         ?XD?RAND?RAND
+            XDATA   0000H     00DBH     UNIT         _XDATA_GROUP_
+            XDATA   00DBH     00B8H     UNIT         ?XD?MATRIXLED
+            XDATA   0193H     0007H     UNIT         ?XD?INFRAREDINPUT
+            XDATA   019AH     0004H     UNIT         ?XD?RAND?RAND
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     0003H     ABSOLUTE     
-            CODE    0006H     0246H     UNIT         ?C?LIB_CODE
-            CODE    024CH     017BH     UNIT         ?PR?READIR?INFRAREDINPUT
-            CODE    03C7H     00C3H     UNIT         ?PR?_SNAKECOLLISION?SNAKE
-            CODE    048AH     00C2H     UNIT         ?PR?_SNAKEMOVE?SNAKE
-            CODE    054CH     00ADH     UNIT         ?PR?_SNAKEHEADMOVE?SNAKE
-            CODE    05F9H     009EH     UNIT         ?PR?UPDATECOL?MATRIXLED
-            CODE    0697H     0096H     UNIT         ?PR?MAIN?MAIN
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 2
+            CODE    0006H     0258H     UNIT         ?C?LIB_CODE
+            CODE    025EH     017BH     UNIT         ?PR?READIR?INFRAREDINPUT
+            CODE    03D9H     00C3H     UNIT         ?PR?_SNAKECOLLISION?SNAKE
+            CODE    049CH     00C2H     UNIT         ?PR?_SNAKEMOVE?SNAKE
+            CODE    055EH     00B9H     UNIT         ?PR?MAIN?MAIN
+            CODE    0617H     00ADH     UNIT         ?PR?_SNAKEHEADMOVE?SNAKE
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 2
 
 
-            CODE    072DH     008CH     UNIT         ?C_C51STARTUP
-            CODE    07B9H     008CH     UNIT         ?PR?GETRANDOMFREEPOS?FOOD
-            CODE    0845H     0073H     UNIT         ?PR?_SHOWEXPLODE?MATRIXLED
-            CODE    08B8H     0053H     UNIT         ?PR?_SNAKEADDBODY?SNAKE
-            CODE    090BH     004DH     UNIT         ?PR?RAND?RAND
-            CODE    0958H     0048H     UNIT         ?PR?_UPDATEBYKEYBOARD?MAIN
-            CODE    09A0H     0048H     UNIT         ?PR?_UPDATEBYINFRARED?MAIN
-            CODE    09E8H     0047H     UNIT         ?PR?_FOODSETPOS?FOOD
-            CODE    0A2FH     0040H     UNIT         ?PR?_SHOWMATRIX?MATRIXLED
-            CODE    0A6FH     003DH     UNIT         ?PR?_UPDATEFOOD?MAIN
-            CODE    0AACH     0039H     UNIT         ?PR?_INITSNAKE?SNAKE
-            CODE    0AE5H     0035H     UNIT         ?PR?_FOODSHOW?FOOD
-            CODE    0B1AH     0030H     UNIT         ?PR?_SNAKESETDIR?SNAKE
-            CODE    0B4AH     002EH     UNIT         ?PR?_INITFOOD?FOOD
-            CODE    0B78H     002DH     UNIT         ?C_INITSEG
-            CODE    0BA5H     002BH     UNIT         ?PR?_SNAKESETHEAD?SNAKE
-            CODE    0BD0H     002BH     UNIT         ?PR?_FOODEATEN?FOOD
-            CODE    0BFBH     0029H     UNIT         ?PR?INITREDMATRIX?MATRIXLED
-            CODE    0C24H     0029H     UNIT         ?PR?INITGREENMATRIX?MATRIXLED
-            CODE    0C4DH     0022H     UNIT         ?PR?ADDPOINTTOREDMAT?MATRIXLED
-            CODE    0C6FH     0022H     UNIT         ?PR?ADDPOINTTOGREENMAT?MATRIXLED
-            CODE    0C91H     0020H     UNIT         ?PR?_GETDIRECTIONFROMCONTROLVALUE?INFRAREDINPUT
-            CODE    0CB1H     0020H     UNIT         ?PR?_GETDIRECTIONFROMKEY?KEYBOARDINPUT
-            CODE    0CD1H     001AH     UNIT         ?PR?_ISDIRECTION?INITCONST
-            CODE    0CEBH     0018H     UNIT         ?PR?_INTTOPOINT?POINT
-            CODE    0D03H     0016H     UNIT         ?PR?_DELAYMS?INITCONST
-            CODE    0D19H     0011H     UNIT         ?PR?_STARTGAME?MAIN
-            CODE    0D2AH     000DH     UNIT         ?PR?_FOODEXIST?FOOD
-            CODE    0D37H     000CH     UNIT         ?PR?_XYTOINT?POINT
-            CODE    0D43H     000BH     UNIT         ?PR?_ONCLICKPOWERCONTROLKEY?INFRAREDINPUT
-            CODE    0D4EH     000BH     UNIT         ?PR?_ONCLICKRESTARTKEY?KEYBOARDINPUT
-            CODE    0D59H     000BH     UNIT         ?PR?INITCURRENTCOL?MATRIXLED
-            CODE    0D64H     000AH     UNIT         ?PR?_GETMAX?INITCONST
-            CODE    0D6EH     0009H     UNIT         ?PR?IRINIT?INFRAREDINPUT
-            CODE    0D77H     0008H     UNIT         ?PR?_SNAKEGETHEAD?SNAKE
-            CODE    0D7FH     0008H     UNIT         ?CO?MATRIXLED
-            CODE    0D87H     0006H     UNIT         ?PR?GETCURRENTKEY?INFRAREDINPUT
-            CODE    0D8DH     0003H     UNIT         ?PR?KEY_SCAN?KEYBOARDINPUT
+            CODE    06C4H     009EH     UNIT         ?PR?UPDATECOL?MATRIXLED
+            CODE    0762H     008CH     UNIT         ?C_C51STARTUP
+            CODE    07EEH     008CH     UNIT         ?PR?GETRANDOMFREEPOS?FOOD
+            CODE    087AH     0073H     UNIT         ?PR?_SHOWEXPLODE?MATRIXLED
+            CODE    08EDH     0053H     UNIT         ?PR?_SNAKEADDBODY?SNAKE
+            CODE    0940H     004DH     UNIT         ?PR?RAND?RAND
+            CODE    098DH     0049H     UNIT         ?PR?_SHOWMATRIX?MATRIXLED
+            CODE    09D6H     0048H     UNIT         ?PR?_UPDATEBYKEYBOARD?MAIN
+            CODE    0A1EH     0048H     UNIT         ?PR?_UPDATEBYINFRARED?MAIN
+            CODE    0A66H     0047H     UNIT         ?PR?_FOODSETPOS?FOOD
+            CODE    0AADH     003DH     UNIT         ?PR?_UPDATEFOOD?MAIN
+            CODE    0AEAH     0039H     UNIT         ?PR?_INITSNAKE?SNAKE
+            CODE    0B23H     0035H     UNIT         ?PR?_FOODSHOW?FOOD
+            CODE    0B58H     0030H     UNIT         ?PR?_SNAKESETDIR?SNAKE
+            CODE    0B88H     002EH     UNIT         ?PR?_INITFOOD?FOOD
+            CODE    0BB6H     002DH     UNIT         ?C_INITSEG
+            CODE    0BE3H     002BH     UNIT         ?PR?_SNAKESETHEAD?SNAKE
+            CODE    0C0EH     002BH     UNIT         ?PR?_FOODEATEN?FOOD
+            CODE    0C39H     0029H     UNIT         ?PR?INITREDMATRIX?MATRIXLED
+            CODE    0C62H     0029H     UNIT         ?PR?INITGREENMATRIX?MATRIXLED
+            CODE    0C8BH     0022H     UNIT         ?PR?ADDPOINTTOREDMAT?MATRIXLED
+            CODE    0CADH     0022H     UNIT         ?PR?ADDPOINTTOGREENMAT?MATRIXLED
+            CODE    0CCFH     0020H     UNIT         ?PR?_GETDIRECTIONFROMCONTROLVALUE?INFRAREDINPUT
+            CODE    0CEFH     0020H     UNIT         ?PR?_GETDIRECTIONFROMKEY?KEYBOARDINPUT
+            CODE    0D0FH     001AH     UNIT         ?PR?_ISDIRECTION?INITCONST
+            CODE    0D29H     0018H     UNIT         ?PR?_INTTOPOINT?POINT
+            CODE    0D41H     0016H     UNIT         ?PR?_DELAYMS?INITCONST
+            CODE    0D57H     0014H     UNIT         ?PR?_GETMAX?INITCONST
+            CODE    0D6BH     0011H     UNIT         ?PR?_STARTGAME?MAIN
+            CODE    0D7CH     000DH     UNIT         ?PR?_FOODEXIST?FOOD
+            CODE    0D89H     000CH     UNIT         ?PR?_XYTOINT?POINT
+            CODE    0D95H     000BH     UNIT         ?PR?_ONCLICKPOWERCONTROLKEY?INFRAREDINPUT
+            CODE    0DA0H     000BH     UNIT         ?PR?_ONCLICKRESTARTKEY?KEYBOARDINPUT
+            CODE    0DABH     000BH     UNIT         ?PR?INITCURRENTCOL?MATRIXLED
+            CODE    0DB6H     0009H     UNIT         ?PR?IRINIT?INFRAREDINPUT
+            CODE    0DBFH     0008H     UNIT         ?PR?_SNAKEGETHEAD?SNAKE
+            CODE    0DC7H     0008H     UNIT         ?CO?MATRIXLED
+            CODE    0DCFH     0006H     UNIT         ?PR?GETCURRENTKEY?INFRAREDINPUT
+            CODE    0DD5H     0003H     UNIT         ?PR?KEY_SCAN?KEYBOARDINPUT
 
 
 
@@ -113,15 +114,15 @@ SEGMENT                                            XDATA_GROUP
   +--> ?PR?MAIN?MAIN
   +--> ?C_INITSEG
 
-?PR?MAIN?MAIN                                    0000H    0088H
+?PR?MAIN?MAIN                                    0000H    008BH
   +--> ?PR?IRINIT?INFRAREDINPUT
   +--> ?PR?INITREDMATRIX?MATRIXLED
   +--> ?PR?INITGREENMATRIX?MATRIXLED
   +--> ?PR?_SNAKECOLLISION?SNAKE
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 3
+
+
   +--> ?PR?_UPDATEBYKEYBOARD?MAIN
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 3
-
-
   +--> ?PR?_UPDATEBYINFRARED?MAIN
   +--> ?PR?_SHOWEXPLODE?MATRIXLED
   +--> ?PR?_STARTGAME?MAIN
@@ -131,90 +132,90 @@ SEGMENT                                            XDATA_GROUP
   +--> ?PR?_GETMAX?INITCONST
   +--> ?PR?_SHOWMATRIX?MATRIXLED
 
-?PR?_SNAKECOLLISION?SNAKE                        0088H    0009H
+?PR?_SNAKECOLLISION?SNAKE                        008BH    0009H
   +--> ?PR?_FOODEATEN?FOOD
 
-?PR?_FOODEATEN?FOOD                              0091H    0003H
+?PR?_FOODEATEN?FOOD                              0094H    0003H
   +--> ?PR?_FOODEXIST?FOOD
   +--> ?PR?INITGREENMATRIX?MATRIXLED
 
-?PR?_UPDATEBYKEYBOARD?MAIN                       0088H    0004H
+?PR?_UPDATEBYKEYBOARD?MAIN                       008BH    0004H
   +--> ?PR?KEY_SCAN?KEYBOARDINPUT
   +--> ?PR?_GETDIRECTIONFROMKEY?KEYBOARDINPUT
   +--> ?PR?_ISDIRECTION?INITCONST
   +--> ?PR?_SNAKESETDIR?SNAKE
   +--> ?PR?_ONCLICKRESTARTKEY?KEYBOARDINPUT
 
-?PR?_UPDATEBYINFRARED?MAIN                       0088H    0004H
+?PR?_UPDATEBYINFRARED?MAIN                       008BH    0004H
   +--> ?PR?GETCURRENTKEY?INFRAREDINPUT
   +--> ?PR?_GETDIRECTIONFROMCONTROLVALUE?INF...
   +--> ?PR?_ISDIRECTION?INITCONST
   +--> ?PR?_SNAKESETDIR?SNAKE
   +--> ?PR?_ONCLICKPOWERCONTROLKEY?INFRAREDI...
 
-?PR?_SHOWEXPLODE?MATRIXLED                       0088H    0004H
+?PR?_SHOWEXPLODE?MATRIXLED                       008BH    0004H
   +--> ?CO?MATRIXLED
   +--> ?PR?_DELAYMS?INITCONST
 
-?PR?_STARTGAME?MAIN                              0088H    0006H
+?PR?_STARTGAME?MAIN                              008BH    0006H
   +--> ?PR?_INITSNAKE?SNAKE
   +--> ?PR?_INITFOOD?FOOD
 
-?PR?_INITSNAKE?SNAKE                             008EH    0002H
+?PR?_INITSNAKE?SNAKE                             0091H    0002H
   +--> ?PR?_SNAKESETHEAD?SNAKE
 
-?PR?_SNAKESETHEAD?SNAKE                          0090H    0005H
+?PR?_SNAKESETHEAD?SNAKE                          0093H    0005H
   +--> ?PR?_SNAKEADDBODY?SNAKE
 
-?PR?_SNAKEADDBODY?SNAKE                          0095H    0005H
+?PR?_SNAKEADDBODY?SNAKE                          0098H    0005H
 
-?PR?_INITFOOD?FOOD                               008EH    0003H
+?PR?_INITFOOD?FOOD                               0091H    0003H
   +--> ?PR?GETRANDOMFREEPOS?FOOD
   +--> ?PR?_FOODSETPOS?FOOD
 
-?PR?GETRANDOMFREEPOS?FOOD                        0091H    0043H
+?PR?GETRANDOMFREEPOS?FOOD                        0094H    0043H
   +--> ?PR?_XYTOINT?POINT
   +--> ?PR?RAND?RAND
 
-?PR?_FOODSETPOS?FOOD                             0091H    0003H
+?PR?_FOODSETPOS?FOOD                             0094H    0003H
   +--> ?PR?_INTTOPOINT?POINT
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 4
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 4
 
 
-?PR?_INTTOPOINT?POINT                            0094H    0002H
+?PR?_INTTOPOINT?POINT                            0097H    0002H
 
-?PR?_SNAKEMOVE?SNAKE                             0088H    0004H
+?PR?_SNAKEMOVE?SNAKE                             008BH    0004H
   +--> ?PR?ADDPOINTTOREDMAT?MATRIXLED
   +--> ?PR?_SNAKEHEADMOVE?SNAKE
   +--> ?PR?_SNAKEGETHEAD?SNAKE
 
-?PR?ADDPOINTTOREDMAT?MATRIXLED                   008CH    0002H
+?PR?ADDPOINTTOREDMAT?MATRIXLED                   008FH    0002H
 
-?PR?_SNAKEHEADMOVE?SNAKE                         008CH    0006H
+?PR?_SNAKEHEADMOVE?SNAKE                         008FH    0006H
   +--> ?PR?_SNAKEGETHEAD?SNAKE
 
-?PR?_UPDATEFOOD?MAIN                             0088H    0003H
+?PR?_UPDATEFOOD?MAIN                             008BH    0003H
   +--> ?PR?_FOODEXIST?FOOD
   +--> ?PR?GETRANDOMFREEPOS?FOOD
   +--> ?PR?_FOODSETPOS?FOOD
   +--> ?PR?_FOODSHOW?FOOD
 
-?PR?_FOODSHOW?FOOD                               008BH    0003H
+?PR?_FOODSHOW?FOOD                               008EH    0003H
   +--> ?PR?_FOODEXIST?FOOD
   +--> ?PR?ADDPOINTTOGREENMAT?MATRIXLED
 
-?PR?ADDPOINTTOGREENMAT?MATRIXLED                 008EH    0002H
+?PR?ADDPOINTTOGREENMAT?MATRIXLED                 0091H    0002H
 
 ?PR?UPDATECOL?MATRIXLED                          -----    -----
   +--> ?PR?INITCURRENTCOL?MATRIXLED
 
-?PR?_SHOWMATRIX?MATRIXLED                        0088H    0001H
+?PR?_SHOWMATRIX?MATRIXLED                        008BH    0001H
   +--> ?CO?MATRIXLED
 
 *** NEW ROOT ***************************************************
 
-?PR?READIR?INFRAREDINPUT                         00D4H    0004H
+?PR?READIR?INFRAREDINPUT                         00D7H    0004H
   +--> ?PR?_DELAYMS?INITCONST
 
 
@@ -225,7 +226,7 @@ SYMBOL TABLE OF MODULE:  EngorgeSnake (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:072DH         SEGMENT       ?C_C51STARTUP
+  C:0762H         SEGMENT       ?C_C51STARTUP
   I:0008H         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
@@ -235,159 +236,159 @@ SYMBOL TABLE OF MODULE:  EngorgeSnake (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:0730H         SYMBOL        IDATALOOP
+  C:0765H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 5
+
+
   N:0000H         SYMBOL        PDATALEN
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 5
-
-
   N:0000H         SYMBOL        PDATASTART
   N:0000H         SYMBOL        PPAGE
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:072DH         SYMBOL        STARTUP1
+  C:0762H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:072DH         LINE#         133
-  C:072FH         LINE#         134
-  C:0730H         LINE#         135
-  C:0731H         LINE#         136
-  C:0733H         LINE#         185
-  C:0736H         LINE#         196
+  C:0762H         LINE#         133
+  C:0764H         LINE#         134
+  C:0765H         LINE#         135
+  C:0766H         LINE#         136
+  C:0768H         LINE#         185
+  C:076BH         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00B0H         PUBLIC        P3
-  C:0D19H         PUBLIC        _StartGame
-  C:0697H         PUBLIC        main
-  C:09A0H         PUBLIC        _UpdateByInfrared
-  C:0958H         PUBLIC        _UpdateByKeyboard
-  C:0A6FH         PUBLIC        _UpdateFood
+  C:0D6BH         PUBLIC        _StartGame
+  C:055EH         PUBLIC        main
+  C:0A1EH         PUBLIC        _UpdateByInfrared
+  C:09D6H         PUBLIC        _UpdateByKeyboard
+  C:0AADH         PUBLIC        _UpdateFood
   -------         PROC          MAIN
   -------         DO            
   X:0000H         SYMBOL        startPeriod
-  X:0001H         SYMBOL        minPeriod
-  X:0002H         SYMBOL        gradient
-  X:0003H         SYMBOL        snake
-  X:0085H         SYMBOL        food
+  X:0002H         SYMBOL        minPeriod
+  X:0004H         SYMBOL        gradient
+  X:0006H         SYMBOL        snake
+  X:0088H         SYMBOL        food
   -------         ENDDO         
-  C:0697H         LINE#         15
-  C:0697H         LINE#         16
-  C:0697H         LINE#         17
-  C:069DH         LINE#         18
-  C:06A1H         LINE#         19
-  C:06A5H         LINE#         24
-  C:06A8H         LINE#         26
-  C:06AAH         LINE#         28
-  C:06AAH         LINE#         29
-  C:06AAH         LINE#         30
-  C:06ADH         LINE#         31
-  C:06B0H         LINE#         34
-  C:06E2H         LINE#         35
-  C:06E2H         LINE#         36
-  C:06E7H         LINE#         37
-  C:06FEH         LINE#         38
-  C:0700H         LINE#         39
-  C:0700H         LINE#         41
-  C:0709H         LINE#         43
-  C:0712H         LINE#         45
-  C:0715H         LINE#         47
-  C:072AH         LINE#         48
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 6
+  C:055EH         LINE#         15
+  C:055EH         LINE#         16
+  C:055EH         LINE#         17
+  C:0568H         LINE#         18
+  C:0570H         LINE#         19
+  C:0577H         LINE#         24
+  C:057AH         LINE#         26
+  C:057CH         LINE#         28
+  C:057CH         LINE#         29
+  C:057CH         LINE#         30
+  C:057FH         LINE#         31
+  C:0582H         LINE#         34
+  C:05B4H         LINE#         35
+  C:05B4H         LINE#         36
+  C:05B9H         LINE#         37
+  C:05D0H         LINE#         38
+  C:05D2H         LINE#         39
+  C:05D2H         LINE#         41
+  C:05DBH         LINE#         43
+  C:05E4H         LINE#         45
+  C:05E7H         LINE#         47
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 6
 
 
+  C:0614H         LINE#         48
   -------         ENDPROC       MAIN
   -------         PROC          _STARTGAME
   D:0001H         SYMBOL        snake
-  X:008BH         SYMBOL        food
-  C:0D19H         LINE#         51
-  C:0D19H         LINE#         52
-  C:0D19H         LINE#         53
-  C:0D1CH         LINE#         54
+  X:008EH         SYMBOL        food
+  C:0D6BH         LINE#         51
+  C:0D6BH         LINE#         52
+  C:0D6BH         LINE#         53
+  C:0D6EH         LINE#         54
   -------         ENDPROC       _STARTGAME
   -------         PROC          _UPDATEFOOD
-  X:0088H         SYMBOL        food
-  C:0A6FH         LINE#         57
-  C:0A7AH         LINE#         58
-  C:0A7AH         LINE#         59
-  C:0A8BH         LINE#         60
-  C:0A9EH         LINE#         62
+  X:008BH         SYMBOL        food
+  C:0AADH         LINE#         56
+  C:0AB8H         LINE#         57
+  C:0AB8H         LINE#         58
+  C:0AC9H         LINE#         59
+  C:0ADCH         LINE#         61
   -------         ENDPROC       _UPDATEFOOD
   -------         PROC          _UPDATEBYKEYBOARD
-  X:0088H         SYMBOL        snake
+  X:008BH         SYMBOL        snake
   -------         DO            
-  X:008BH         SYMBOL        keyNum
+  X:008EH         SYMBOL        keyNum
   -------         ENDDO         
-  C:0958H         LINE#         65
-  C:0963H         LINE#         66
-  C:0963H         LINE#         67
-  C:0966H         LINE#         69
-  C:096EH         LINE#         71
-  C:0977H         LINE#         72
-  C:098FH         LINE#         74
-  C:099AH         LINE#         75
-  C:099DH         LINE#         76
-  C:099FH         LINE#         77
+  C:09D6H         LINE#         64
+  C:09E1H         LINE#         65
+  C:09E1H         LINE#         66
+  C:09E4H         LINE#         68
+  C:09ECH         LINE#         70
+  C:09F5H         LINE#         71
+  C:0A0DH         LINE#         73
+  C:0A18H         LINE#         74
+  C:0A1BH         LINE#         75
+  C:0A1DH         LINE#         76
   -------         ENDPROC       _UPDATEBYKEYBOARD
   -------         PROC          _UPDATEBYINFRARED
-  X:0088H         SYMBOL        snake
+  X:008BH         SYMBOL        snake
   -------         DO            
-  X:008BH         SYMBOL        currentValue
+  X:008EH         SYMBOL        currentValue
   -------         ENDDO         
-  C:09A0H         LINE#         80
-  C:09ABH         LINE#         81
-  C:09ABH         LINE#         82
-  C:09AEH         LINE#         84
-  C:09B6H         LINE#         86
-  C:09BFH         LINE#         87
-  C:09D7H         LINE#         89
-  C:09E2H         LINE#         90
-  C:09E5H         LINE#         91
-  C:09E7H         LINE#         92
+  C:0A1EH         LINE#         79
+  C:0A29H         LINE#         80
+  C:0A29H         LINE#         81
+  C:0A2CH         LINE#         83
+  C:0A34H         LINE#         85
+  C:0A3DH         LINE#         86
+  C:0A55H         LINE#         88
+  C:0A60H         LINE#         89
+  C:0A63H         LINE#         90
+  C:0A65H         LINE#         91
   -------         ENDPROC       _UPDATEBYINFRARED
   -------         ENDMOD        MAIN
 
   -------         MODULE        INITCONST
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:0D03H         PUBLIC        _DelayMs
-  C:0CD1H         PUBLIC        _IsDirection
-  C:0D64H         PUBLIC        _getMax
+  C:0D41H         PUBLIC        _DelayMs
+  C:0D0FH         PUBLIC        _IsDirection
+  C:0D57H         PUBLIC        _getMax
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 7
+
+
   -------         PROC          _ISDIRECTION
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 7
-
-
   D:0007H         SYMBOL        dir
-  C:0CD1H         LINE#         5
-  C:0CD1H         LINE#         6
-  C:0CD1H         LINE#         7
-  C:0CE5H         LINE#         8
-  C:0CE8H         LINE#         9
-  C:0CEAH         LINE#         10
+  C:0D0FH         LINE#         5
+  C:0D0FH         LINE#         6
+  C:0D0FH         LINE#         7
+  C:0D23H         LINE#         8
+  C:0D26H         LINE#         9
+  C:0D28H         LINE#         10
   -------         ENDPROC       _ISDIRECTION
   -------         PROC          _DELAYMS
   D:0006H         SYMBOL        x
   -------         DO            
   D:0005H         SYMBOL        i
   -------         ENDDO         
-  C:0D03H         LINE#         12
-  C:0D03H         LINE#         13
-  C:0D03H         LINE#         15
-  C:0D0DH         LINE#         16
-  C:0D18H         LINE#         17
+  C:0D41H         LINE#         12
+  C:0D41H         LINE#         13
+  C:0D41H         LINE#         15
+  C:0D4BH         LINE#         16
+  C:0D56H         LINE#         17
   -------         ENDPROC       _DELAYMS
   -------         PROC          _GETMAX
-  D:0007H         SYMBOL        a
-  D:0005H         SYMBOL        b
-  C:0D64H         LINE#         19
-  C:0D64H         LINE#         20
-  C:0D64H         LINE#         21
-  C:0D6DH         LINE#         22
+  D:0006H         SYMBOL        a
+  D:0004H         SYMBOL        b
+  C:0D57H         LINE#         19
+  C:0D57H         LINE#         20
+  C:0D57H         LINE#         21
+  C:0D6AH         LINE#         22
   -------         ENDPROC       _GETMAX
   -------         ENDMOD        INITCONST
 
@@ -395,407 +396,407 @@ SYMBOL TABLE OF MODULE:  EngorgeSnake (?C_STARTUP)
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00B0H         PUBLIC        P3
   B:00A8H.7       PUBLIC        EA
-  X:0190H         PUBLIC        _time
+  X:0193H         PUBLIC        _time
   B:00B0H.2       PUBLIC        IRIN
-  C:0D87H         PUBLIC        GetCurrentKey
-  C:024CH         PUBLIC        ReadIr
-  X:0191H         PUBLIC        IrValue
-  C:0C91H         PUBLIC        _GetDirectionFromControlValue
-  C:0D43H         PUBLIC        _OnClickPowerControlKey
+  C:0DCFH         PUBLIC        GetCurrentKey
+  C:025EH         PUBLIC        ReadIr
+  X:0194H         PUBLIC        IrValue
+  C:0CCFH         PUBLIC        _GetDirectionFromControlValue
+  C:0D95H         PUBLIC        _OnClickPowerControlKey
   B:00A8H.0       PUBLIC        EX0
   B:0088H.0       PUBLIC        IT0
-  C:0D6EH         PUBLIC        IrInit
+  C:0DB6H         PUBLIC        IrInit
   -------         PROC          IRINIT
-  C:0D6EH         LINE#         7
-  C:0D6EH         LINE#         8
-  C:0D6EH         LINE#         9
-  C:0D70H         LINE#         10
-  C:0D72H         LINE#         11
-  C:0D74H         LINE#         13
-  C:0D76H         LINE#         14
+  C:0DB6H         LINE#         7
+  C:0DB6H         LINE#         8
+  C:0DB6H         LINE#         9
+  C:0DB8H         LINE#         10
+  C:0DBAH         LINE#         11
+  C:0DBCH         LINE#         13
+  C:0DBEH         LINE#         14
   -------         ENDPROC       IRINIT
   -------         PROC          GETCURRENTKEY
-  C:0D87H         LINE#         17
-  C:0D87H         LINE#         18
-  C:0D87H         LINE#         19
-  C:0D8CH         LINE#         20
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 8
+  C:0DCFH         LINE#         17
+  C:0DCFH         LINE#         18
+  C:0DCFH         LINE#         19
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 8
 
 
+  C:0DD4H         LINE#         20
   -------         ENDPROC       GETCURRENTKEY
   -------         PROC          _ONCLICKPOWERCONTROLKEY
   D:0007H         SYMBOL        controlKey
-  C:0D43H         LINE#         22
-  C:0D43H         LINE#         23
-  C:0D43H         LINE#         24
-  C:0D4DH         LINE#         25
+  C:0D95H         LINE#         22
+  C:0D95H         LINE#         23
+  C:0D95H         LINE#         24
+  C:0D9FH         LINE#         25
   -------         ENDPROC       _ONCLICKPOWERCONTROLKEY
   -------         PROC          _GETDIRECTIONFROMCONTROLVALUE
   D:0007H         SYMBOL        controlKey
-  C:0C91H         LINE#         27
-  C:0C91H         LINE#         28
-  C:0C91H         LINE#         29
-  C:0CA2H         LINE#         30
-  C:0CA2H         LINE#         31
-  C:0CA2H         LINE#         32
-  C:0CA5H         LINE#         33
-  C:0CA5H         LINE#         34
-  C:0CA8H         LINE#         35
-  C:0CA8H         LINE#         36
-  C:0CABH         LINE#         37
-  C:0CABH         LINE#         38
-  C:0CAEH         LINE#         39
-  C:0CAEH         LINE#         40
-  C:0CB0H         LINE#         41
+  C:0CCFH         LINE#         27
+  C:0CCFH         LINE#         28
+  C:0CCFH         LINE#         29
+  C:0CE0H         LINE#         30
+  C:0CE0H         LINE#         31
+  C:0CE0H         LINE#         32
+  C:0CE3H         LINE#         33
+  C:0CE3H         LINE#         34
+  C:0CE6H         LINE#         35
+  C:0CE6H         LINE#         36
+  C:0CE9H         LINE#         37
+  C:0CE9H         LINE#         38
+  C:0CECH         LINE#         39
+  C:0CECH         LINE#         40
+  C:0CEEH         LINE#         41
   -------         ENDPROC       _GETDIRECTIONFROMCONTROLVALUE
   -------         PROC          READIR
   -------         DO            
-  X:00D4H         SYMBOL        j
-  X:00D5H         SYMBOL        k
-  X:00D6H         SYMBOL        err
+  X:00D7H         SYMBOL        j
+  X:00D8H         SYMBOL        k
+  X:00D9H         SYMBOL        err
   -------         ENDDO         
-  C:024CH         LINE#         44
-  C:0269H         LINE#         48
-  C:026EH         LINE#         51
-  C:0274H         LINE#         52
-  C:0274H         LINE#         54
-  C:027EH         LINE#         57
-  C:0290H         LINE#         58
-  C:0290H         LINE#         59
-  C:0297H         LINE#         60
-  C:02A5H         LINE#         61
-  C:02A7H         LINE#         62
-  C:02ADH         LINE#         63
-  C:02ADH         LINE#         64
-  C:02B7H         LINE#         65
-  C:02C9H         LINE#         66
-  C:02C9H         LINE#         67
-  C:02D0H         LINE#         68
-  C:02DEH         LINE#         69
-  C:02E0H         LINE#         70
-  C:02E5H         LINE#         71
-  C:02E5H         LINE#         72
-  C:02EAH         LINE#         73
-  C:02EAH         LINE#         75
-  C:02F3H         LINE#         76
-  C:0305H         LINE#         77
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 9
+  C:025EH         LINE#         44
+  C:027BH         LINE#         48
+  C:0280H         LINE#         51
+  C:0286H         LINE#         52
+  C:0286H         LINE#         54
+  C:0290H         LINE#         57
+  C:02A2H         LINE#         58
+  C:02A2H         LINE#         59
+  C:02A9H         LINE#         60
+  C:02B7H         LINE#         61
+  C:02B9H         LINE#         62
+  C:02BFH         LINE#         63
+  C:02BFH         LINE#         64
+  C:02C9H         LINE#         65
+  C:02DBH         LINE#         66
+  C:02DBH         LINE#         67
+  C:02E2H         LINE#         68
+  C:02F0H         LINE#         69
+  C:02F2H         LINE#         70
+  C:02F7H         LINE#         71
+  C:02F7H         LINE#         72
+  C:02FCH         LINE#         73
+  C:02FCH         LINE#         75
+  C:0305H         LINE#         76
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 9
 
 
-  C:0305H         LINE#         78
-  C:030CH         LINE#         79
-  C:031AH         LINE#         80
-  C:031CH         LINE#         81
-  C:0326H         LINE#         82
-  C:0338H         LINE#         83
-  C:0338H         LINE#         84
-  C:033FH         LINE#         85
-  C:0345H         LINE#         86
-  C:0353H         LINE#         87
-  C:035CH         LINE#         88
-  C:035CH         LINE#         89
-  C:0360H         LINE#         91
-  C:0360H         LINE#         92
-  C:0360H         LINE#         93
-  C:0372H         LINE#         94
-  C:037BH         LINE#         95
-  C:037BH         LINE#         96
-  C:0389H         LINE#         97
-  C:0389H         LINE#         98
-  C:038EH         LINE#         99
-  C:039DH         LINE#         100
-  C:03ACH         LINE#         101
-  C:03ACH         LINE#         102
-  C:03ACH         LINE#         103
-  C:03ACH         LINE#         105
-  C:03ACH         LINE#         106
-  C:03ACH         LINE#         107
+  C:0317H         LINE#         77
+  C:0317H         LINE#         78
+  C:031EH         LINE#         79
+  C:032CH         LINE#         80
+  C:032EH         LINE#         81
+  C:0338H         LINE#         82
+  C:034AH         LINE#         83
+  C:034AH         LINE#         84
+  C:0351H         LINE#         85
+  C:0357H         LINE#         86
+  C:0365H         LINE#         87
+  C:036EH         LINE#         88
+  C:036EH         LINE#         89
+  C:0372H         LINE#         91
+  C:0372H         LINE#         92
+  C:0372H         LINE#         93
+  C:0384H         LINE#         94
+  C:038DH         LINE#         95
+  C:038DH         LINE#         96
+  C:039BH         LINE#         97
+  C:039BH         LINE#         98
+  C:03A0H         LINE#         99
+  C:03AFH         LINE#         100
+  C:03BEH         LINE#         101
+  C:03BEH         LINE#         102
+  C:03BEH         LINE#         103
+  C:03BEH         LINE#         105
+  C:03BEH         LINE#         106
+  C:03BEH         LINE#         107
   -------         ENDPROC       READIR
   -------         ENDMOD        INFRAREDINPUT
 
   -------         MODULE        KEYBOARDINPUT
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00B0H         PUBLIC        P3
-  C:0CB1H         PUBLIC        _GetDirectionFromKey
-  C:0D8DH         PUBLIC        Key_Scan
-  C:0D4EH         PUBLIC        _OnClickRestartKey
+  C:0CEFH         PUBLIC        _GetDirectionFromKey
+  C:0DD5H         PUBLIC        Key_Scan
+  C:0DA0H         PUBLIC        _OnClickRestartKey
   -------         PROC          KEY_SCAN
-  C:0D8DH         LINE#         5
-  C:0D8DH         LINE#         6
-  C:0D8DH         LINE#         7
-  C:0D8FH         LINE#         8
+  C:0DD5H         LINE#         5
+  C:0DD5H         LINE#         6
+  C:0DD5H         LINE#         7
+  C:0DD7H         LINE#         8
   -------         ENDPROC       KEY_SCAN
   -------         PROC          _GETDIRECTIONFROMKEY
   D:0007H         SYMBOL        key
-  C:0CB1H         LINE#         10
-  C:0CB1H         LINE#         11
-  C:0CB1H         LINE#         12
-  C:0CC2H         LINE#         13
-  C:0CC2H         LINE#         14
-  C:0CC2H         LINE#         15
-  C:0CC5H         LINE#         16
-  C:0CC5H         LINE#         17
-  C:0CC8H         LINE#         18
-  C:0CC8H         LINE#         19
-  C:0CCBH         LINE#         20
-  C:0CCBH         LINE#         21
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 10
+  C:0CEFH         LINE#         10
+  C:0CEFH         LINE#         11
+  C:0CEFH         LINE#         12
+  C:0D00H         LINE#         13
+  C:0D00H         LINE#         14
+  C:0D00H         LINE#         15
+  C:0D03H         LINE#         16
+  C:0D03H         LINE#         17
+  C:0D06H         LINE#         18
+  C:0D06H         LINE#         19
+  C:0D09H         LINE#         20
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 10
 
 
-  C:0CCEH         LINE#         22
-  C:0CCEH         LINE#         23
-  C:0CD0H         LINE#         24
+  C:0D09H         LINE#         21
+  C:0D0CH         LINE#         22
+  C:0D0CH         LINE#         23
+  C:0D0EH         LINE#         24
   -------         ENDPROC       _GETDIRECTIONFROMKEY
   -------         PROC          _ONCLICKRESTARTKEY
   D:0007H         SYMBOL        key
-  C:0D4EH         LINE#         26
-  C:0D4EH         LINE#         27
-  C:0D4EH         LINE#         28
-  C:0D58H         LINE#         29
+  C:0DA0H         LINE#         26
+  C:0DA0H         LINE#         27
+  C:0DA0H         LINE#         28
+  C:0DAAH         LINE#         29
   -------         ENDPROC       _ONCLICKRESTARTKEY
   -------         ENDMOD        KEYBOARDINPUT
 
   -------         MODULE        POINT
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:0CEBH         PUBLIC        _IntToPoint
-  C:0D37H         PUBLIC        _XYToInt
+  C:0D29H         PUBLIC        _IntToPoint
+  C:0D89H         PUBLIC        _XYToInt
   -------         PROC          _XYTOINT
   D:0006H         SYMBOL        x
   D:0004H         SYMBOL        y
-  C:0D37H         LINE#         11
-  C:0D37H         LINE#         12
-  C:0D37H         LINE#         13
-  C:0D42H         LINE#         14
+  C:0D89H         LINE#         11
+  C:0D89H         LINE#         12
+  C:0D89H         LINE#         13
+  C:0D94H         LINE#         14
   -------         ENDPROC       _XYTOINT
   -------         PROC          _INTTOPOINT
   D:0005H         SYMBOL        num
   -------         DO            
-  X:0094H         SYMBOL        p
+  X:0097H         SYMBOL        p
   -------         ENDDO         
-  C:0CEBH         LINE#         16
-  C:0CEBH         LINE#         17
-  C:0CEBH         LINE#         19
-  C:0CF3H         LINE#         20
-  C:0CFCH         LINE#         21
-  C:0D02H         LINE#         22
+  C:0D29H         LINE#         16
+  C:0D29H         LINE#         17
+  C:0D29H         LINE#         19
+  C:0D31H         LINE#         20
+  C:0D3AH         LINE#         21
+  C:0D40H         LINE#         22
   -------         ENDPROC       _INTTOPOINT
   -------         ENDMOD        POINT
 
   -------         MODULE        SNAKE
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:054CH         PUBLIC        _SnakeHeadMove
-  C:0D77H         PUBLIC        _SnakeGetHead
-  C:0AACH         PUBLIC        _InitSnake
-  C:048AH         PUBLIC        _SnakeMove
-  C:08B8H         PUBLIC        _SnakeAddBody
-  C:0BA5H         PUBLIC        _SnakeSetHead
-  C:03C7H         PUBLIC        _SnakeCollision
-  C:0B1AH         PUBLIC        _SnakeSetDir
+  C:0617H         PUBLIC        _SnakeHeadMove
+  C:0DBFH         PUBLIC        _SnakeGetHead
+  C:0AEAH         PUBLIC        _InitSnake
+  C:049CH         PUBLIC        _SnakeMove
+  C:08EDH         PUBLIC        _SnakeAddBody
+  C:0BE3H         PUBLIC        _SnakeSetHead
+  C:03D9H         PUBLIC        _SnakeCollision
+  C:0B58H         PUBLIC        _SnakeSetDir
   -------         PROC          _INITSNAKE
   D:0001H         SYMBOL        snake
   -------         DO            
-  X:008EH         SYMBOL        p
+  X:0091H         SYMBOL        p
   -------         ENDDO         
-  C:0AACH         LINE#         4
-  C:0AACH         LINE#         5
-  C:0AACH         LINE#         7
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 11
+  C:0AEAH         LINE#         4
+  C:0AEAH         LINE#         5
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 11
 
 
-  C:0AB2H         LINE#         8
-  C:0AB5H         LINE#         9
-  C:0ABAH         LINE#         10
-  C:0AC3H         LINE#         11
+  C:0AEAH         LINE#         7
+  C:0AF0H         LINE#         8
+  C:0AF3H         LINE#         9
+  C:0AF8H         LINE#         10
+  C:0B01H         LINE#         11
   -------         ENDPROC       _INITSNAKE
   -------         PROC          _SNAKESETHEAD
   D:0001H         SYMBOL        snake
-  X:0093H         SYMBOL        point
-  C:0BA5H         LINE#         14
-  C:0BA5H         LINE#         15
-  C:0BA5H         LINE#         16
-  C:0BA9H         LINE#         17
-  C:0BABH         LINE#         18
-  C:0BCDH         LINE#         19
-  C:0BCFH         LINE#         20
+  X:0096H         SYMBOL        point
+  C:0BE3H         LINE#         14
+  C:0BE3H         LINE#         15
+  C:0BE3H         LINE#         16
+  C:0BE7H         LINE#         17
+  C:0BE9H         LINE#         18
+  C:0C0BH         LINE#         19
+  C:0C0DH         LINE#         20
   -------         ENDPROC       _SNAKESETHEAD
   -------         PROC          _SNAKEADDBODY
-  X:0095H         SYMBOL        snake
-  X:0098H         SYMBOL        point
-  C:08B8H         LINE#         22
-  C:08C3H         LINE#         23
-  C:08C3H         LINE#         24
-  C:08F8H         LINE#         25
+  X:0098H         SYMBOL        snake
+  X:009BH         SYMBOL        point
+  C:08EDH         LINE#         22
+  C:08F8H         LINE#         23
+  C:08F8H         LINE#         24
+  C:092DH         LINE#         25
   -------         ENDPROC       _SNAKEADDBODY
   -------         PROC          _SNAKEGETHEAD
   D:0001H         SYMBOL        snake
-  C:0D77H         LINE#         28
+  C:0DBFH         LINE#         28
   -------         ENDPROC       _SNAKEGETHEAD
   -------         PROC          _SNAKESETDIR
   D:0001H         SYMBOL        snake
   D:0005H         SYMBOL        dir
-  C:0B1AH         LINE#         30
-  C:0B1AH         LINE#         31
-  C:0B1AH         LINE#         32
-  C:0B45H         LINE#         37
-  C:0B49H         LINE#         38
+  C:0B58H         LINE#         30
+  C:0B58H         LINE#         31
+  C:0B58H         LINE#         32
+  C:0B83H         LINE#         37
+  C:0B87H         LINE#         38
   -------         ENDPROC       _SNAKESETDIR
   -------         PROC          _SNAKECOLLISION
-  X:0088H         SYMBOL        snake
-  X:008BH         SYMBOL        food
+  X:008BH         SYMBOL        snake
+  X:008EH         SYMBOL        food
   -------         DO            
-  X:008EH         SYMBOL        headX
-  X:008FH         SYMBOL        headY
-  X:0090H         SYMBOL        i
+  X:0091H         SYMBOL        headX
+  X:0092H         SYMBOL        headY
+  X:0093H         SYMBOL        i
   -------         ENDDO         
-  C:03C7H         LINE#         40
-  C:03D2H         LINE#         41
-  C:03D2H         LINE#         42
-  C:03DCH         LINE#         43
-  C:03E6H         LINE#         44
-  C:03EAH         LINE#         45
-  C:03F8H         LINE#         46
-  C:0414H         LINE#         47
-  C:0414H         LINE#         48
-  C:0427H         LINE#         49
-  C:0435H         LINE#         50
-  C:0438H         LINE#         51
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 12
+  C:03D9H         LINE#         40
+  C:03E4H         LINE#         41
+  C:03E4H         LINE#         42
+  C:03EEH         LINE#         43
+  C:03F8H         LINE#         44
+  C:03FCH         LINE#         45
+  C:040AH         LINE#         46
+  C:0426H         LINE#         47
+  C:0426H         LINE#         48
+  C:0439H         LINE#         49
+  C:0447H         LINE#         50
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 12
 
 
-  C:0438H         LINE#         53
-  C:0453H         LINE#         54
-  C:047CH         LINE#         55
-  C:0487H         LINE#         56
-  C:0489H         LINE#         57
+  C:044AH         LINE#         51
+  C:044AH         LINE#         53
+  C:0465H         LINE#         54
+  C:048EH         LINE#         55
+  C:0499H         LINE#         56
+  C:049BH         LINE#         57
   -------         ENDPROC       _SNAKECOLLISION
   -------         PROC          _SNAKEMOVE
-  X:0088H         SYMBOL        snake
+  X:008BH         SYMBOL        snake
   -------         DO            
-  X:008BH         SYMBOL        i
+  X:008EH         SYMBOL        i
   -------         ENDDO         
-  C:048AH         LINE#         59
-  C:0495H         LINE#         60
-  C:0495H         LINE#         61
-  C:04A0H         LINE#         62
-  C:04AAH         LINE#         63
-  C:04AAH         LINE#         64
-  C:04ECH         LINE#         65
-  C:0518H         LINE#         66
-  C:0520H         LINE#         68
-  C:052EH         LINE#         69
+  C:049CH         LINE#         59
+  C:04A7H         LINE#         60
+  C:04A7H         LINE#         61
+  C:04B2H         LINE#         62
+  C:04BCH         LINE#         63
+  C:04BCH         LINE#         64
+  C:04FEH         LINE#         65
+  C:052AH         LINE#         66
+  C:0532H         LINE#         68
+  C:0540H         LINE#         69
   -------         ENDPROC       _SNAKEMOVE
   -------         PROC          _SNAKEHEADMOVE
-  X:008CH         SYMBOL        snake
+  X:008FH         SYMBOL        snake
   -------         DO            
-  X:008FH         SYMBOL        head
+  X:0092H         SYMBOL        head
   D:0007H         SYMBOL        dir
   -------         ENDDO         
-  C:054CH         LINE#         73
-  C:0557H         LINE#         74
-  C:0557H         LINE#         75
-  C:0563H         LINE#         76
-  C:0571H         LINE#         78
-  C:057FH         LINE#         79
-  C:057FH         LINE#         80
-  C:057FH         LINE#         81
-  C:057FH         LINE#         82
-  C:059BH         LINE#         83
-  C:059DH         LINE#         84
-  C:059DH         LINE#         85
-  C:059DH         LINE#         86
-  C:059DH         LINE#         87
-  C:05C0H         LINE#         88
-  C:05C0H         LINE#         89
-  C:05C0H         LINE#         90
-  C:05C0H         LINE#         91
-  C:05C0H         LINE#         92
-  C:05D9H         LINE#         93
-  C:05DBH         LINE#         94
-  C:05DBH         LINE#         95
-  C:05DBH         LINE#         96
-  C:05DBH         LINE#         97
-  C:05F8H         LINE#         98
-  C:05F8H         LINE#         99
-  C:05F8H         LINE#         100
-  C:05F8H         LINE#         101
-  C:05F8H         LINE#         102
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 13
+  C:0617H         LINE#         73
+  C:0622H         LINE#         74
+  C:0622H         LINE#         75
+  C:062EH         LINE#         76
+  C:063CH         LINE#         78
+  C:064AH         LINE#         79
+  C:064AH         LINE#         80
+  C:064AH         LINE#         81
+  C:064AH         LINE#         82
+  C:0666H         LINE#         83
+  C:0668H         LINE#         84
+  C:0668H         LINE#         85
+  C:0668H         LINE#         86
+  C:0668H         LINE#         87
+  C:068BH         LINE#         88
+  C:068BH         LINE#         89
+  C:068BH         LINE#         90
+  C:068BH         LINE#         91
+  C:068BH         LINE#         92
+  C:06A4H         LINE#         93
+  C:06A6H         LINE#         94
+  C:06A6H         LINE#         95
+  C:06A6H         LINE#         96
+  C:06A6H         LINE#         97
+  C:06C3H         LINE#         98
+  C:06C3H         LINE#         99
+  C:06C3H         LINE#         100
+  C:06C3H         LINE#         101
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 13
 
 
-  C:05F8H         LINE#         103
+  C:06C3H         LINE#         102
+  C:06C3H         LINE#         103
   -------         ENDPROC       _SNAKEHEADMOVE
   -------         ENDMOD        SNAKE
 
   -------         MODULE        FOOD
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:09E8H         PUBLIC        _FoodsetPos
-  C:0D32H         PUBLIC        _FoodExist
-  C:0B4AH         PUBLIC        _InitFood
-  C:0AE5H         PUBLIC        _FoodShow
-  C:07B9H         PUBLIC        GetRandomFreePos
-  C:0BD0H         PUBLIC        _FoodEaten
+  C:0A66H         PUBLIC        _FoodsetPos
+  C:0D84H         PUBLIC        _FoodExist
+  C:0B88H         PUBLIC        _InitFood
+  C:0B23H         PUBLIC        _FoodShow
+  C:07EEH         PUBLIC        GetRandomFreePos
+  C:0C0EH         PUBLIC        _FoodEaten
   -------         PROC          _INITFOOD
-  X:008EH         SYMBOL        food
-  C:0B4AH         LINE#         5
-  C:0B55H         LINE#         6
-  C:0B55H         LINE#         7
-  C:0B65H         LINE#         8
+  X:0091H         SYMBOL        food
+  C:0B88H         LINE#         5
+  C:0B93H         LINE#         6
+  C:0B93H         LINE#         7
+  C:0BA3H         LINE#         8
   -------         ENDPROC       _INITFOOD
   -------         PROC          GETRANDOMFREEPOS
   -------         DO            
-  X:0091H         SYMBOL        i
-  X:0092H         SYMBOL        j
-  X:0093H         SYMBOL        freeSize
-  X:0094H         SYMBOL        freePos
+  X:0094H         SYMBOL        i
+  X:0095H         SYMBOL        j
+  X:0096H         SYMBOL        freeSize
+  X:0097H         SYMBOL        freePos
   -------         ENDDO         
-  C:07B9H         LINE#         11
-  C:07B9H         LINE#         12
-  C:07B9H         LINE#         13
-  C:07BEH         LINE#         14
-  C:07C2H         LINE#         15
-  C:07D1H         LINE#         16
-  C:07F0H         LINE#         17
-  C:082BH         LINE#         18
-  C:0844H         LINE#         19
+  C:07EEH         LINE#         11
+  C:07EEH         LINE#         12
+  C:07EEH         LINE#         13
+  C:07F3H         LINE#         14
+  C:07F7H         LINE#         15
+  C:0806H         LINE#         16
+  C:0825H         LINE#         17
+  C:0860H         LINE#         18
+  C:0879H         LINE#         19
   -------         ENDPROC       GETRANDOMFREEPOS
   -------         PROC          _FOODSETPOS
-  X:0091H         SYMBOL        food
+  X:0094H         SYMBOL        food
   D:0005H         SYMBOL        pos
-  C:09E8H         LINE#         21
-  C:09F3H         LINE#         22
-  C:09F3H         LINE#         23
-  C:0A1FH         LINE#         24
+  C:0A66H         LINE#         21
+  C:0A71H         LINE#         22
+  C:0A71H         LINE#         23
+  C:0A9DH         LINE#         24
   -------         ENDPROC       _FOODSETPOS
   -------         PROC          _FOODEATEN
-  X:0091H         SYMBOL        food
-  C:0BD0H         LINE#         27
-  C:0BDBH         LINE#         28
-  C:0BDBH         LINE#         29
-  C:0BE4H         LINE#         30
-  C:0BE6H         LINE#         31
-  C:0BF5H         LINE#         32
-  C:0BF8H         LINE#         33
-  C:0BFAH         LINE#         34
+  X:0094H         SYMBOL        food
+  C:0C0EH         LINE#         27
+  C:0C19H         LINE#         28
+  C:0C19H         LINE#         29
+  C:0C22H         LINE#         30
+  C:0C24H         LINE#         31
+  C:0C33H         LINE#         32
+  C:0C36H         LINE#         33
+  C:0C38H         LINE#         34
   -------         ENDPROC       _FOODEATEN
   -------         PROC          L?0016
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 14
+
+
   -------         ENDPROC       L?0016
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 14
-
-
   -------         PROC          _FOODEXIST
   D:0001H         SYMBOL        food
-  C:0D32H         LINE#         36
-  C:0D32H         LINE#         37
-  C:0D32H         LINE#         38
-  C:0D36H         LINE#         39
+  C:0D84H         LINE#         36
+  C:0D84H         LINE#         37
+  C:0D84H         LINE#         38
+  C:0D88H         LINE#         39
   -------         ENDPROC       _FOODEXIST
   -------         PROC          _FOODSHOW
-  X:008BH         SYMBOL        food
-  C:0AE5H         LINE#         41
-  C:0AF0H         LINE#         42
-  C:0AF0H         LINE#         43
-  C:0AF9H         LINE#         45
-  C:0B19H         LINE#         46
+  X:008EH         SYMBOL        food
+  C:0B23H         LINE#         41
+  C:0B2EH         LINE#         42
+  C:0B2EH         LINE#         43
+  C:0B37H         LINE#         45
+  C:0B57H         LINE#         46
   -------         ENDPROC       _FOODSHOW
   -------         ENDMOD        FOOD
 
@@ -804,135 +805,135 @@ SYMBOL TABLE OF MODULE:  EngorgeSnake (?C_STARTUP)
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
-  C:0C24H         PUBLIC        InitGreenMatrix
-  X:00D8H         PUBLIC        explodeCol
-  X:0100H         PUBLIC        _redMatrix
-  C:0A2FH         PUBLIC        _ShowMatrix
-  C:0C4DH         PUBLIC        AddPointToRedMat
-  C:05F9H         PUBLIC        updateCol
-  C:0BFBH         PUBLIC        InitRedMatrix
-  X:0140H         PUBLIC        _currentGreenCOL
-  C:0D59H         PUBLIC        InitCurrentCOL
-  C:0D7FH         PUBLIC        COL
-  X:0148H         PUBLIC        _currentRedCOL
-  X:0150H         PUBLIC        _greenMatrix
-  C:0C6FH         PUBLIC        AddPointToGreenMat
-  C:0845H         PUBLIC        _ShowExplode
+  C:0C62H         PUBLIC        InitGreenMatrix
+  X:00DBH         PUBLIC        explodeCol
+  X:0103H         PUBLIC        _redMatrix
+  C:098DH         PUBLIC        _ShowMatrix
+  C:0C8BH         PUBLIC        AddPointToRedMat
+  C:06C4H         PUBLIC        updateCol
+  C:0C39H         PUBLIC        InitRedMatrix
+  X:0143H         PUBLIC        _currentGreenCOL
+  C:0DABH         PUBLIC        InitCurrentCOL
+  C:0DC7H         PUBLIC        COL
+  X:014BH         PUBLIC        _currentRedCOL
+  X:0153H         PUBLIC        _greenMatrix
+  C:0CADH         PUBLIC        AddPointToGreenMat
+  C:087AH         PUBLIC        _ShowExplode
   -------         PROC          INITREDMATRIX
   -------         DO            
   D:0007H         SYMBOL        i
   D:0006H         SYMBOL        j
   -------         ENDDO         
-  C:0BFBH         LINE#         21
-  C:0BFBH         LINE#         22
-  C:0BFBH         LINE#         24
-  C:0BFDH         LINE#         25
-  C:0BFFH         LINE#         26
-  C:0C23H         LINE#         27
+  C:0C39H         LINE#         21
+  C:0C39H         LINE#         22
+  C:0C39H         LINE#         24
+  C:0C3BH         LINE#         25
+  C:0C3DH         LINE#         26
+  C:0C61H         LINE#         27
   -------         ENDPROC       INITREDMATRIX
   -------         PROC          INITGREENMATRIX
   -------         DO            
   D:0007H         SYMBOL        i
   D:0006H         SYMBOL        j
   -------         ENDDO         
-  C:0C24H         LINE#         29
-  C:0C24H         LINE#         30
-  C:0C24H         LINE#         32
-  C:0C26H         LINE#         33
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 15
+  C:0C62H         LINE#         29
+  C:0C62H         LINE#         30
+  C:0C62H         LINE#         32
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 15
 
 
-  C:0C28H         LINE#         34
-  C:0C4CH         LINE#         35
+  C:0C64H         LINE#         33
+  C:0C66H         LINE#         34
+  C:0C8AH         LINE#         35
   -------         ENDPROC       INITGREENMATRIX
   -------         PROC          INITCURRENTCOL
   -------         DO            
   D:0007H         SYMBOL        i
   -------         ENDDO         
-  C:0D59H         LINE#         37
-  C:0D59H         LINE#         38
-  C:0D59H         LINE#         40
-  C:0D59H         LINE#         41
-  C:0D63H         LINE#         42
+  C:0DABH         LINE#         37
+  C:0DABH         LINE#         38
+  C:0DABH         LINE#         40
+  C:0DABH         LINE#         41
+  C:0DB5H         LINE#         42
   -------         ENDPROC       INITCURRENTCOL
   -------         PROC          ADDPOINTTOREDMAT
-  X:008CH         SYMBOL        point
-  C:0C4DH         LINE#         44
-  C:0C4DH         LINE#         45
-  C:0C4DH         LINE#         46
-  C:0C6EH         LINE#         47
+  X:008FH         SYMBOL        point
+  C:0C8BH         LINE#         44
+  C:0C8BH         LINE#         45
+  C:0C8BH         LINE#         46
+  C:0CACH         LINE#         47
   -------         ENDPROC       ADDPOINTTOREDMAT
   -------         PROC          ADDPOINTTOGREENMAT
-  X:008EH         SYMBOL        point
-  C:0C6FH         LINE#         49
-  C:0C6FH         LINE#         50
-  C:0C6FH         LINE#         51
-  C:0C90H         LINE#         52
+  X:0091H         SYMBOL        point
+  C:0CADH         LINE#         49
+  C:0CADH         LINE#         50
+  C:0CADH         LINE#         51
+  C:0CCEH         LINE#         52
   -------         ENDPROC       ADDPOINTTOGREENMAT
   -------         PROC          UPDATECOL
   -------         DO            
   D:0007H         SYMBOL        i
   D:0006H         SYMBOL        j
   -------         ENDDO         
-  C:05F9H         LINE#         55
-  C:05F9H         LINE#         56
-  C:05F9H         LINE#         58
-  C:05FCH         LINE#         59
-  C:05FEH         LINE#         60
-  C:0600H         LINE#         61
-  C:0600H         LINE#         62
-  C:0631H         LINE#         63
-  C:0662H         LINE#         64
-  C:0668H         LINE#         65
-  C:0668H         LINE#         66
-  C:0676H         LINE#         67
-  C:0684H         LINE#         68
-  C:0684H         LINE#         69
-  C:0696H         LINE#         70
+  C:06C4H         LINE#         55
+  C:06C4H         LINE#         56
+  C:06C4H         LINE#         58
+  C:06C7H         LINE#         59
+  C:06C9H         LINE#         60
+  C:06CBH         LINE#         61
+  C:06CBH         LINE#         62
+  C:06FCH         LINE#         63
+  C:072DH         LINE#         64
+  C:0733H         LINE#         65
+  C:0733H         LINE#         66
+  C:0741H         LINE#         67
+  C:074FH         LINE#         68
+  C:074FH         LINE#         69
+  C:0761H         LINE#         70
   -------         ENDPROC       UPDATECOL
   -------         PROC          _SHOWMATRIX
-  D:0007H         SYMBOL        showTime
+  D:0006H         SYMBOL        showTime
   -------         DO            
-  D:0006H         SYMBOL        col
-  X:0088H         SYMBOL        k
+  D:0005H         SYMBOL        col
+  X:008BH         SYMBOL        k
   -------         ENDDO         
-  C:0A2FH         LINE#         72
-  C:0A2FH         LINE#         73
-  C:0A2FH         LINE#         74
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 16
+  C:098DH         LINE#         72
+  C:098DH         LINE#         73
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 16
 
 
-  C:0A34H         LINE#         75
-  C:0A3AH         LINE#         76
-  C:0A3CH         LINE#         77
-  C:0A3CH         LINE#         78
-  C:0A3FH         LINE#         79
-  C:0A42H         LINE#         81
-  C:0A4FH         LINE#         82
-  C:0A57H         LINE#         84
-  C:0A64H         LINE#         85
-  C:0A66H         LINE#         86
-  C:0A6EH         LINE#         87
+  C:098DH         LINE#         74
+  C:0992H         LINE#         75
+  C:099DH         LINE#         76
+  C:099FH         LINE#         77
+  C:099FH         LINE#         78
+  C:09A2H         LINE#         79
+  C:09A5H         LINE#         81
+  C:09B2H         LINE#         82
+  C:09BAH         LINE#         84
+  C:09C7H         LINE#         85
+  C:09C9H         LINE#         86
+  C:09D5H         LINE#         87
   -------         ENDPROC       _SHOWMATRIX
   -------         PROC          _SHOWEXPLODE
-  X:0088H         SYMBOL        showTime
+  X:008BH         SYMBOL        showTime
   -------         DO            
-  X:0089H         SYMBOL        i
-  X:008AH         SYMBOL        j
-  X:008BH         SYMBOL        temTime
+  X:008CH         SYMBOL        i
+  X:008DH         SYMBOL        j
+  X:008EH         SYMBOL        temTime
   -------         ENDDO         
-  C:0845H         LINE#         89
-  C:084AH         LINE#         90
-  C:084AH         LINE#         92
-  C:084DH         LINE#         93
-  C:0850H         LINE#         94
-  C:0861H         LINE#         95
-  C:0866H         LINE#         96
-  C:0866H         LINE#         98
-  C:0889H         LINE#         99
-  C:0890H         LINE#         100
-  C:0897H         LINE#         101
-  C:08B7H         LINE#         102
+  C:087AH         LINE#         89
+  C:087FH         LINE#         90
+  C:087FH         LINE#         92
+  C:0882H         LINE#         93
+  C:0885H         LINE#         94
+  C:0896H         LINE#         95
+  C:089BH         LINE#         96
+  C:089BH         LINE#         98
+  C:08BEH         LINE#         99
+  C:08C5H         LINE#         100
+  C:08CCH         LINE#         101
+  C:08ECH         LINE#         102
   -------         ENDPROC       _SHOWEXPLODE
   -------         ENDMOD        MATRIXLED
 
@@ -958,32 +959,36 @@ SYMBOL TABLE OF MODULE:  EngorgeSnake (?C_STARTUP)
 
   -------         MODULE        ?C?CSTOPTR
   C:0187H         PUBLIC        ?C?CSTOPTR
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/06/2017  14:55:13  PAGE 17
+
+
   -------         ENDMOD        ?C?CSTOPTR
-BL51 BANKED LINKER/LOCATER V6.22                                                      06/05/2017  22:55:29  PAGE 17
 
-
+  -------         MODULE        ?C?IMUL
+  C:01A9H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
 
   -------         MODULE        ?C?SIDIV
-  C:01A9H         PUBLIC        ?C?SIDIV
+  C:01BBH         PUBLIC        ?C?SIDIV
   -------         ENDMOD        ?C?SIDIV
 
   -------         MODULE        RAND
-  X:0197H         PUBLIC        ?SRAND?BYTE
-  C:090BH         PUBLIC        RAND
-  C:0949H         PUBLIC        _SRAND
+  X:019AH         PUBLIC        ?SRAND?BYTE
+  C:0940H         PUBLIC        RAND
+  C:097EH         PUBLIC        _SRAND
   -------         ENDMOD        RAND
 
   -------         MODULE        ?C?UIDIV
-  C:01DFH         PUBLIC        ?C?UIDIV
+  C:01F1H         PUBLIC        ?C?UIDIV
   -------         ENDMOD        ?C?UIDIV
 
   -------         MODULE        ?C?LLDXDATA
-  C:0234H         PUBLIC        ?C?LLDXDATA
+  C:0246H         PUBLIC        ?C?LLDXDATA
   -------         ENDMOD        ?C?LLDXDATA
 
   -------         MODULE        ?C?LSTXDATA
-  C:0240H         PUBLIC        ?C?LSTXDATA
+  C:0252H         PUBLIC        ?C?LSTXDATA
   -------         ENDMOD        ?C?LSTXDATA
 
-Program Size: data=9.0 xdata=411 code=3472
+Program Size: data=9.0 xdata=414 code=3544
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

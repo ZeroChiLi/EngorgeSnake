@@ -16,7 +16,7 @@ void DelayMs(unsigned int x)
 		for (i = 0; i<13; i++);
 }						
 		 
-unsigned char getMax(unsigned char a,unsigned char b)
+int getMax(int a,int b)
 {
 	return a > b ? a : b;
 }			

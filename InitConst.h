@@ -27,7 +27,7 @@ extern unsigned char IsDirection(Direction dir);
 extern void DelayMs(unsigned int x);
 				
 //获取两个数的最大值
-extern unsigned char getMax(unsigned char a,unsigned char b);	
+extern int getMax(int a,inte b);	
 
 
 #endif
