@@ -35,6 +35,7 @@ P2.0~P2.7正接红色列控。
 ![](http://img.my.csdn.net/uploads/201706/11/1497149338_7984.jpg)
  
 1.5	在蛇碰到自己（红点重叠）以后，游戏结束，展示绿色扩散灯效。
+
 ![](http://img.my.csdn.net/uploads/201706/11/1497149362_9257.jpg)
  -> ![](http://img.my.csdn.net/uploads/201706/11/1497149362_2226.jpg) -> ![](http://img.my.csdn.net/uploads/201706/11/1497149606_5855.jpg) -> ![](http://img.my.csdn.net/uploads/201706/11/1497149301_6442.jpg)
 
