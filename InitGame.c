@@ -1,5 +1,5 @@
 
-#include "InitConst.h"
+#include "InitGame.h"
 
 
 unsigned char IsDirection(Direction dir)
@@ -15,4 +15,8 @@ void DelayMs(unsigned int x)
 	while(x--)
 		for (i = 0; i<13; i++);
 }						
-		 
+		 					   
+unsigned char getMax(unsigned char a,unsigned char b)
+{
+	return a > b ? a : b;
+}			

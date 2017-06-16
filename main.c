@@ -17,6 +17,7 @@ void main(void)
 	int startPeriod = 1000;								//初始周期 ，越大越慢
 	int minPeriod = 500;								//最短周期
 	int gradient = 50;									//难度梯度
+	int period = 0;
 
 	Snake snake;										//蛇对象
 	Food food;										   	//食物对象
@@ -44,7 +45,8 @@ void main(void)
 							 
 		UpdateCol();									//检查并更新每列数值
 
-		ShowMatrix(getMax(startPeriod - snake._length * gradient,minPeriod));	//显示红绿点阵，参数是周期。
+		period = startPeriod - snake._length * gradient	> minPeriod ? startPeriod - snake._length * gradient :minPeriod;
+		ShowMatrix(period);	//显示红绿点阵，参数是周期。
 	}
 }
 

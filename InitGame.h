@@ -1,5 +1,5 @@
-#ifndef _INIT_CONST_H_
-#define _INIT_CONST_H_	  
+#ifndef _INIT_GAME_H_
+#define _INIT_GAME_H_	  
 	   
 #include <reg51.h>	 
 #include <intrins.h>
@@ -11,12 +11,12 @@
 
 //方向,独立键盘 k3 k6 k7 k8
 typedef enum DIRECTION
-{
+{							
 	NONE = 0,
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
+	UP,					//上
+	DOWN,		   		//下
+	LEFT,				//左
+	RIGHT				//右
 }Direction;		   
 
 
@@ -25,6 +25,5 @@ extern unsigned char IsDirection(Direction dir);
 
 //延时
 extern void DelayMs(unsigned int x);
-					
-
+		
 #endif
